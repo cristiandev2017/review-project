@@ -1,10 +1,12 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+//import {useDispatch, useSelector} from 'react-redux';
 
-const newEmploye = () =>{
+const NewEmploye = () =>{
     return(
-    <div>Componente de crear empleado</div>
+    <div>
+        <h1>Component Employe</h1>
+    </div>
     )
 }
 
-export default newEmploye;
+export default NewEmploye;

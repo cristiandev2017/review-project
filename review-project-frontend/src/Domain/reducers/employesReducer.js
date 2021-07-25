@@ -1,3 +1,4 @@
+//Constantes
 import {
     ADD_EMPLOYE,
     ADD_EMPLOYE_FAILURE,
@@ -11,7 +12,7 @@ const initialState = {
     loading:false
 }
 
-export default function(state=initialState, action){
+const employesReducer =(state=initialState, action) =>{
     switch (action.type) {
         case ADD_EMPLOYE:
             return {
@@ -34,3 +35,5 @@ export default function(state=initialState, action){
             return state;
     }
 }
+
+export default employesReducer;
