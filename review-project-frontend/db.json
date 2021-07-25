@@ -1,0 +1,28 @@
+{
+  "employes": [
+    {
+      "id": 1,
+      "name": "Nicolas Ramirez",
+      "phone": "5423616",
+      "email": "nicolas@correo.com",
+      "specialty": "Admin",
+      "role": "ADMIN"
+    },
+     {
+      "id": 2,
+      "name": "Cristian Quinones",
+      "phone": "5423618",
+      "email": "cristian@correo.com",
+      "specialty": "Barbero",
+      "role": "EMP"
+    },
+    {
+      "id": 3,
+      "name": "Mateo Jaramillo",
+      "phone": "5423618",
+      "email": "mateo@correo.com",
+      "specialty": "Barbero",
+      "role": "EMP"
+    }
+  ]
+}

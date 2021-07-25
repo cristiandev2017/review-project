@@ -1,0 +1,4 @@
+//Constants OF Employe
+export const ADD_EMPLOYE = 'ADD_EMPLOYE';
+export const ADD_EMPLOYE_SUCCESS = 'ADD_EMPLOYE_SUCCESS';
+export const ADD_EMPLOYE_FAILURE = 'ADD_EMPLOYE_FAILURE';
