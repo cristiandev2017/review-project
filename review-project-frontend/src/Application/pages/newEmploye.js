@@ -1,5 +1,5 @@
-import React, {useState, useRef} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 //Acciones de redux
 import {addNewEmployeAction} from '../../Domain/actions/employeActions'; 

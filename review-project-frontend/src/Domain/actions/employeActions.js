@@ -1,7 +1,12 @@
 import {
+    //ADD
     ADD_EMPLOYE,
     ADD_EMPLOYE_FAILURE,
-    ADD_EMPLOYE_SUCCESS
+    ADD_EMPLOYE_SUCCESS,
+    //LIST
+    LIST_EMPLOYES,
+    LIST_EMPLOYES_SUCCESS,
+    LIST_EMPLOYES_FAILURE
 } from '../types/employe.js';
 
 import clientAxios from './../../Infrastructure/services/api/axios';
@@ -37,3 +42,32 @@ const addEmployeFailure = (error) =>({
     payload:error
 });
 
+//Listar empleados
+export function listEmployesAction(){
+    return async(dispatch) =>{
+        dispatch(listEmployes());
+        try{
+            //Hago mi peticion HTTP
+            const response = await clientAxios.get('/employes');
+            dispatch(listEmployesSuccess(response.data));
+
+        }catch(error){
+            dispatch(listEmployesFailure());
+        }
+    }
+}
+
+const listEmployes = () =>({
+    type:LIST_EMPLOYES,
+    payload:true
+})
+
+const listEmployesSuccess = (employes) =>({
+    type:LIST_EMPLOYES_SUCCESS,
+    payload:employes
+})
+
+const listEmployesFailure = () =>({
+    type:LIST_EMPLOYES_FAILURE,
+    payload:true
+})

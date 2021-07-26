@@ -8,7 +8,7 @@
       "specialty": "Admin",
       "role": "ADMIN"
     },
-     {
+    {
       "id": 2,
       "name": "Cristian Quinones",
       "phone": "5423618",
@@ -23,6 +23,14 @@
       "email": "mateo@correo.com",
       "specialty": "Barbero",
       "role": "EMP"
+    },
+    {
+      "name": "Pedro",
+      "phone": "5106542",
+      "email": "correo@correo.com",
+      "specialty": "Peluqueria",
+      "role": "EMP",
+      "id": 4
     }
   ]
 }

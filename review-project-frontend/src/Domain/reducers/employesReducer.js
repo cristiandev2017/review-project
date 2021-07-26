@@ -2,7 +2,10 @@
 import {
     ADD_EMPLOYE,
     ADD_EMPLOYE_FAILURE,
-    ADD_EMPLOYE_SUCCESS
+    ADD_EMPLOYE_SUCCESS,
+    LIST_EMPLOYES,
+    LIST_EMPLOYES_SUCCESS,
+    LIST_EMPLOYES_FAILURE,
 } from '../types/employe.js';
 
 //Creamos el estado inicial
@@ -30,6 +33,23 @@ const employesReducer =(state=initialState, action) =>{
                 ...state,
                 loading:false,
                 error: action.payload
+            }
+        case LIST_EMPLOYES:
+            return{
+                ...state,
+                loading:action.payload
+            }
+        case LIST_EMPLOYES_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                employes: action.payload
+            }
+        case LIST_EMPLOYES_FAILURE:
+            return{
+             ...state,
+             loading:false,
+             error: action.payload
             }
         default:
             return state;

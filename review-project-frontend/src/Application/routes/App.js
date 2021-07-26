@@ -3,6 +3,8 @@ import React from 'react'
 //Componentes/paginas
 import NewEmploye from './../pages/NewEmploye';
 import Home from  '../pages/Home';
+import Employes from '../pages/Employes';
+import NotFoundPage from './../layout/NotFoundPage';
 
 //Redux
 import {Provider} from "react-redux";
@@ -12,6 +14,8 @@ import store from "../../Domain/store";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 
 
+
+
 const App = () => {
   return (
     <Router>
@@ -19,6 +23,8 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/newemploye" component={NewEmploye}/>
+          <Route exact path="/listemployes" component={Employes} />
+          <Route path={"*"} component={NotFoundPage} /> 
         </Switch>
       </Provider>
     </Router>
