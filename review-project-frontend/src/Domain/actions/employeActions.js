@@ -10,8 +10,13 @@ import {
     //DELETE
     DELETE_EMPLOYE,
     DELETE_EMPLOYE_SUCCESS,
-    DELETE_EMPLOYE_FAILURE
+    DELETE_EMPLOYE_FAILURE,
+    //READ
+    ONLY_EMPLOYE,
+    EDIT_EMPLOYE,
 } from '../types/employe.js';
+
+import axios from 'axios';
 
 import clientAxios from './../../Infrastructure/services/api/axios';
 
@@ -104,3 +109,27 @@ const deleteEmployeFailure = () => ({
     type:DELETE_EMPLOYE_FAILURE,
     payload:true
 })
+
+export function onlyEmployeAction(employe){
+    return (dispatch) =>{
+        dispatch(onlyEmploye(employe))
+    }
+}
+
+const onlyEmploye = employe =>({
+    type:ONLY_EMPLOYE,
+    payload:employe
+})
+
+export const employeEditAction =async (id,name, phone, email,specialty,role) => {
+    return async (dispatch) =>{
+    dispatch(editEmploye())
+    const employe = {name:name, phone:phone, email:email, specialty: specialty,role:role}
+    const response = await clientAxios.put('/employes/'+id,employe);
+    }
+}
+
+const editEmploye = ()=>({
+    type:EDIT_EMPLOYE,
+    payload:true
+});

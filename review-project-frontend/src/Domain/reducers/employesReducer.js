@@ -9,13 +9,16 @@ import {
     DELETE_EMPLOYE,
     DELETE_EMPLOYE_SUCCESS,
     DELETE_EMPLOYE_FAILURE,
+    ONLY_EMPLOYE,
+    EDIT_EMPLOYE
 } from '../types/employe.js';
 
 //Creamos el estado inicial
 const initialState = {
     employes:[],
     error:null,
-    loading:false
+    loading:false,
+    employeone:null,
 }
 
 const employesReducer =(state=initialState, action) =>{
@@ -62,13 +65,23 @@ const employesReducer =(state=initialState, action) =>{
         case DELETE_EMPLOYE_SUCCESS:
             return{
             ...state,
-            loading: false
+            loading: action.payload
             }
         case DELETE_EMPLOYE_FAILURE:
             return{
             ...state,
             loading: false,
             error: action.payload
+            }
+        case ONLY_EMPLOYE:
+            return{
+            ...state,
+            employeone:action.payload
+            }
+        case EDIT_EMPLOYE:
+            return{
+            ...state,
+            loading:action.payload
             }
         default:
             return state;
