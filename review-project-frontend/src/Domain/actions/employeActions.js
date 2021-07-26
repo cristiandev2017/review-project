@@ -6,7 +6,11 @@ import {
     //LIST
     LIST_EMPLOYES,
     LIST_EMPLOYES_SUCCESS,
-    LIST_EMPLOYES_FAILURE
+    LIST_EMPLOYES_FAILURE,
+    //DELETE
+    DELETE_EMPLOYE,
+    DELETE_EMPLOYE_SUCCESS,
+    DELETE_EMPLOYE_FAILURE
 } from '../types/employe.js';
 
 import clientAxios from './../../Infrastructure/services/api/axios';
@@ -69,5 +73,34 @@ const listEmployesSuccess = (employes) =>({
 
 const listEmployesFailure = () =>({
     type:LIST_EMPLOYES_FAILURE,
+    payload:true
+})
+
+//Eliminar empleados
+export function deleteEmployeAction(id){
+    return async (dispatch) =>{
+        dispatch(deleteEmploye());
+        try{
+            await clientAxios.delete('/employes/'+id);
+            dispatch(deleteEmployeSuccess())
+            alert("Se ha eliminado correctamente");
+        }catch(error){
+            dispatch(deleteEmployeFailure);
+        }
+    }
+}
+
+const deleteEmploye = () =>({
+    type:DELETE_EMPLOYE,
+    payload:true
+})
+
+const deleteEmployeSuccess = () => ({
+    type:DELETE_EMPLOYE_SUCCESS,
+    payload:'Se ha eliminado'
+})
+
+const deleteEmployeFailure = () => ({
+    type:DELETE_EMPLOYE_FAILURE,
     payload:true
 })
