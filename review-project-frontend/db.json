@@ -15,6 +15,56 @@
       "specialty": "Barbero",
       "role": "EMP",
       "id": 2
+    },
+    {
+      "name": "hola",
+      "phone": "3015839907",
+      "email": "cristed1994@hotmail.com",
+      "specialty": "Peluqueria",
+      "role": "EMP",
+      "id": 3
+    },
+    {
+      "name": "hola",
+      "phone": "3015839907",
+      "email": "cristed1994@hotmail.com",
+      "specialty": "Peluqueria",
+      "role": "EMP",
+      "id": 4
+    },
+    {
+      "name": "Manuela Quiñones Santamaría",
+      "phone": "3015839907",
+      "email": "cristed1994@hotmail.com",
+      "specialty": "Peluqueria",
+      "role": "EMP",
+      "id": 5
+    }
+  ],
+  "clients": [
+    {
+      "name": "Cristian Quiñones",
+      "email": "cristian@correo.com",
+      "user": "cristiandevq",
+      "phone": "3005121415",
+      "birthday": "22/10/2000",
+      "id": 1
+    },
+    {
+      "name": "Nicolas",
+      "email": "nicolas@correo.com",
+      "user": "nikomax",
+      "phone": "3005121412",
+      "birthday": "22/10/2000",
+      "id": 2
+    },
+    {
+      "name": "hola",
+      "email": "cristed1994@hotmail.com",
+      "user": "mquinoes",
+      "phone": "3015839907",
+      "birthday": "12/10/2020",
+      "id": 3
     }
   ]
 }

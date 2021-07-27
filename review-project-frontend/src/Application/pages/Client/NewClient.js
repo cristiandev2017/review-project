@@ -1,44 +1,45 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
-import { bindActionCreators } from "redux";
+//import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
+//import { bindActionCreators } from "redux";
 //Acciones de redux
-import {addNewEmployeAction} from '../../Domain/actions/employeActions'; 
+import {addNewClientAction} from '../../../Domain/actions/clientActions'; 
 
-const NewEmploye = ({addNewEmployeAction}) =>{
-
+const NewClient = () => {
     //Datos de mi formulario
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
-    const [specialty, setSpecialty] = useState('');
-    const [role, setRole] = useState('');
+    const [user, setUser] = useState('');
+    const [birthday, setBirthday] = useState('');
 
     //Temporalmente con useDispatch y useSelector
-    //const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     //Crear la accion para disparar la funcion
-    const addEmploye = (employe) => addNewEmployeAction(employe);
+    const addClient = (client) =>  dispatch(addNewClientAction(client));
 
-    const submitAddEmploye = e =>{
+    const submitAddClient = e =>{
         //Prevengo que se recargue la pagina
+        console.log("Estoy llamando el clic");
         e.preventDefault();
         
         //Algunas validaciones del formulario
 
         //Ejecutar accion del nuevo elemento
-        addEmploye({
+        addClient({
             name,
-            phone, 
             email,
-            specialty,
-            role
+            user,
+            phone, 
+            birthday
         })        
     }
 
     return(
     <div>
         <h2>Agregar empleado</h2>
-        <form onSubmit={submitAddEmploye}>
+        <form onSubmit={submitAddClient}>
             Name
             <input 
                 type="text"
@@ -60,19 +61,19 @@ const NewEmploye = ({addNewEmployeAction}) =>{
                 value={email}
                 onChange={e => setEmail(e.target.value)}    
             />
-            Especialidad
+            UserName
              <input 
                 type="text"
-                name="specialty"
-                value={specialty}
-                onChange={e => setSpecialty(e.target.value)}    
+                name="user"
+                value={user}
+                onChange={e => setUser(e.target.value)}    
             />
-            Rol
+            Cumpleaños
              <input 
                 type="text"
-                name="role"
-                value={role}
-                onChange={e => setRole(e.target.value)}    
+                name="birthday"
+                value={birthday}
+                onChange={e => setBirthday(e.target.value)}    
             />
             <button type="submit"> Agregar</button>
         </form>
@@ -80,9 +81,8 @@ const NewEmploye = ({addNewEmployeAction}) =>{
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ addNewEmployeAction }, dispatch);
-};
+//const mapDispatchToProps = (dispatch) => {
+//  return bindActionCreators({ addNewClientAction }, dispatch);
+//};
 
-export default connect(null,mapDispatchToProps)(NewEmploye);
-//export default NewEmploye;
+export default NewClient;
