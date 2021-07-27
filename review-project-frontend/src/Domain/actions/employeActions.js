@@ -16,7 +16,7 @@ import {
     EDIT_EMPLOYE,
 } from '../types/employe.js';
 
-import axios from 'axios';
+//import axios from 'axios';
 
 import clientAxios from './../../Infrastructure/services/api/axios';
 
@@ -125,7 +125,7 @@ export const employeEditAction =async (id,name, phone, email,specialty,role) => 
     return async (dispatch) =>{
     dispatch(editEmploye())
     const employe = {name:name, phone:phone, email:email, specialty: specialty,role:role}
-    const response = await clientAxios.put('/employes/'+id,employe);
+    await clientAxios.put('/employes/'+id,employe);
     }
 }
 

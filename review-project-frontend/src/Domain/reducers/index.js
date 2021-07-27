@@ -1,8 +1,11 @@
 import {combineReducers} from "redux";
 import employesReducer from './employesReducer';
+import clientsReducer from './clientsReducer';
 
-export default combineReducers({
-    employesReducer:employesReducer
+const reducer = combineReducers({
+    employesReducer:employesReducer,
+    clientsReducer:clientsReducer
 });
 
 
+export default reducer;

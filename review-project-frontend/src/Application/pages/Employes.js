@@ -15,7 +15,7 @@ function Employes() {
   useEffect(() => {
     const listEmployes = () => dispatch(listEmployesAction());
     listEmployes();
-  }, []);
+  }, [dispatch]);
 
   const deleteEmploye = (id) => {
     dispatch(deleteEmployeAction(id));
