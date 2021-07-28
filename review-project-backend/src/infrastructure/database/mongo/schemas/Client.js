@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const ClientSchema = mongoose.Schema({
+  fullName: {
+    type: String,
+  },
+  photoURL: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,
