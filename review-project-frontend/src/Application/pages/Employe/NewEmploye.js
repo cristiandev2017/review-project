@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from "redux";
 //Acciones de redux
-import {addNewEmployeAction} from '../../Domain/actions/employeActions'; 
+import {addNewEmployeAction} from '../../../Domain/actions/employeActions'; 
+
 
 const NewEmploye = ({addNewEmployeAction}) =>{
 

@@ -1,9 +1,9 @@
 //React
 import React from 'react'
 //Componentes/paginas
-import NewEmploye from './../pages/NewEmploye';
+import NewEmploye from '../pages/Employe/NewEmploye';
 import Home from  '../pages/Home';
-import Employes from '../pages/Employes';
+import Employes from '../pages/Employe/Employes';
 import NotFoundPage from './../layout/NotFoundPage';
 import NewClient from '../pages/Client/NewClient';
 import Register from './../pages/Auth/Register';
@@ -17,9 +17,11 @@ import {PrivateRoute, PublicRoute} from "./Routes";
 
 //Estaticos
 import Header from '../layout/Header';
+import Footer from './../layout/Footer';
 
 //Rutas
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
 
 
 const App = ({clientone}) => {
@@ -36,6 +38,7 @@ const App = ({clientone}) => {
            <Route exact path="/test" component={Test} />
           <Route path={"*"} component={NotFoundPage} /> 
         </Switch>
+      <Footer/>
     </Router>
   );
 }

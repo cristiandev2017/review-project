@@ -1,42 +1,54 @@
-import React, {useState} from 'react';
-import {connect} from 'react-redux';
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { loginClientAction } from './../../../Domain/actions/clientActions';
+import { loginClientAction } from "./../../../Domain/actions/clientActions";
 import { withRouter } from "react-router-dom";
 
+const Login = ({ loginClientAction, history }) => {
+  const [phoneNumber, setphoneNumber] = useState("");
+  const [birthday, setbirthday] = useState("");
+  //const dispatch = useDispatch();
 
-const Login = ({loginClientAction,history}) => {
+  const handleGoogleAuth = () => {
+    loginClientAction(phoneNumber, birthday);
+    //history.push('/test');
+  };
 
-    const [phoneNumber, setphoneNumber] = useState('');
-    const [birthday, setbirthday] = useState('');
-    //const dispatch = useDispatch();
-    
-    const handleGoogleAuth = () =>{
-        loginClientAction(phoneNumber,birthday);        
-        //history.push('/test');
-    }
-
-    return (
-        <div>
-           <h1>Login / Registro</h1> 
-            phoneNumber
-            <input type="text"
-            name="phoneNumber"
-            value={phoneNumber}
-            onChange={(e) => setphoneNumber(e.target.value)}
+  return (
+    <div className="mt-4">
+      <div className="row">
+        <div className="col-3"></div>
+        <div className="col-6">
+          <center>
+            <h2>Login/Registro</h2>
+            <hr/>
+            <h5>Por favor digite su numero de telefono:</h5>
+            <input
+              className="form-control"
+              type="text"
+              name="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setphoneNumber(e.target.value)}
             ></input>
-            birthday
-            <input type="date"
-                name="birthday"
-                value={birthday}
-                onChange={(e)=>setbirthday(e.target.value)}></input>
-            <button onClick={handleGoogleAuth}>Autenticar con Google</button>
+            <h5>Por favor digite su fecha de cumpleaños:</h5>
+            <input
+              className="form-control"
+              type="date"
+              name="birthday"
+              value={birthday}
+              onChange={(e) => setbirthday(e.target.value)}
+            ></input>
+            <hr/><button className="btn btn-outline-danger btn-block" onClick={handleGoogleAuth}>Autenticar con Google</button>
+          </center>
         </div>
-    )
-}
+        <div className="col-3"></div>
+      </div>
+    </div>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ loginClientAction }, dispatch);
 };
 
-export default connect(null,mapDispatchToProps)(withRouter(Login));
+export default connect(null, mapDispatchToProps)(withRouter(Login));

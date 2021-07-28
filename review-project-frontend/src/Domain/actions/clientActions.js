@@ -127,13 +127,15 @@ export const currentuser = (phoneNumber,birthday) => {
         }       
         //Para la base de datos
         const userdata = {
+            fullName:client.userName,
+            photoURL:client.photoURL,
             email:client.userEmail,
             phoneNumber:phoneNumber,
             birthday:birthday
         }
-        await clientAxios.post('/clients',userdata);
+        const responsecl = await clientAxios.post('/register-client',userdata);
         //console.log(responsecl.data);
-        dispatch({type:clientConstants.CREATE_LOGIN_USER,payload:userstate});
+        dispatch({type:clientConstants.CREATE_LOGIN_USER,payload:responsecl.data});
     }
 }
 
