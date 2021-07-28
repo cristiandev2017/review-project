@@ -5,6 +5,10 @@ module.exports = class {
     throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
   }
 
+  update(client) {
+    throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+  }
+
   delete(email) {
     throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
   }
