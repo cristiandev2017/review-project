@@ -101,10 +101,10 @@ const onlyClient = client =>({
 })
 
 //Login
-export const loginClientAction = () =>{
+export const loginClientAction = (phoneNumber,birthday) =>{
     return (dispatch) =>{
         signInWithGoogle().then(r => {
-        dispatch(currentuser());
+        dispatch(currentuser(phoneNumber,birthday));
         }).catch(error => {
             console.log(error)
         })
@@ -113,39 +113,27 @@ export const loginClientAction = () =>{
     }
 }
 
-export const currentuser = () => {
+export const currentuser = (phoneNumber,birthday) => {
     return async(dispatch) =>{
-      
         const client =getUser();
-        const responsecl = await clientAxios.post('/clients',client);
-        console.log(responsecl.data);
-        dispatch({type:clientConstants.CREATE_LOGIN_USER,payload:responsecl.data});
-    }
-}
-/*
-const Login = () =>({
-    type:clientConstants.LOGIN,
-    payload:"Se logeo"
-})
-
-
-const Logout = () =>({
-    type:clientConstants.LOGOUT,
-    payload:"Se deslogea"
-})
-*/
-
-/* En modificacion
-export const employeEditAction =async (id,name, phone, email,specialty,role) => {
-    return async (dispatch) =>{
-    dispatch(editEmploye())
-    const employe = {name:name, phone:phone, email:email, specialty: specialty,role:role}
-    const response = await clientAxios.put('/employes/'+id,employe);
+        //Para mi estado
+        const userstate = {        
+            name:client.userName,
+            email:client.userEmail,
+            photoURL:client.photoURL,
+            phone:phoneNumber,
+            birthday:birthday,
+            authenticated:true
+        }       
+        //Para la base de datos
+        const userdata = {
+            email:client.userEmail,
+            phoneNumber:phoneNumber,
+            birthday:birthday
+        }
+        await clientAxios.post('/clients',userdata);
+        //console.log(responsecl.data);
+        dispatch({type:clientConstants.CREATE_LOGIN_USER,payload:userstate});
     }
 }
 
-const editEmploye = ()=>({
-    type:EDIT_EMPLOYE,
-    payload:true
-});
-*/

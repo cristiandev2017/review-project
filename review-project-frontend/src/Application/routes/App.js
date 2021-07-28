@@ -9,33 +9,42 @@ import NewClient from '../pages/Client/NewClient';
 import Register from './../pages/Auth/Register';
 import Login from './../pages/Auth/Login';
 import Test from './../pages/Auth/Test';
+import {connect} from 'react-redux';
+import {getUser} from "../../Domain/selectors/user";
 
-//Redux
-import {Provider} from "react-redux";
-import store from "../../Domain/store";
+//Manejador de paginas publicas y privadas
+import {PrivateRoute, PublicRoute} from "./Routes";
+
+//Estaticos
+import Header from '../layout/Header';
 
 //Rutas
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 
-
-const App = () => {
-  return (
+const App = ({clientone}) => {
+   return (
     <Router>
-      <Provider store={store}>
+      <Header/>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/newemploye" component={NewEmploye}/>
-          <Route exact path="/listemployes" component={Employes} />
-          <Route exact path="/newclient" component={NewClient}/>
-          <Route exact path="/register" component={Register} />
+          <PrivateRoute exact path="/newemploye" component={NewEmploye} authenticated={(clientone.authenticated)}/>
+          <PrivateRoute exact path="/listemployes" component={Employes} authenticated={(clientone.authenticated)} />
+          <PrivateRoute exact path="/newclient" component={NewClient} authenticated={(clientone.authenticated)}/>
+          <PublicRoute exact path="/register" component={Register} authenticated={(clientone.authenticated)} />
           <Route exact path="/login" component={Login} />
            <Route exact path="/test" component={Test} />
           <Route path={"*"} component={NotFoundPage} /> 
         </Switch>
-      </Provider>
     </Router>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        clientone:getUser(state)
+    }
+}
+
+export default connect(mapStateToProps, null)(App);
+//export default App;

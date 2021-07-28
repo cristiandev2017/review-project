@@ -43,120 +43,52 @@
   ],
   "clients": [
     {
-      "name": "Cristian Quiñones",
       "email": "cristian@correo.com",
-      "user": "cristiandevq",
-      "phone": "3005121415",
+      "phoneNumber": "3005121415",
       "birthday": "22/10/2000",
       "id": 1
     },
     {
-      "name": "Nicolas",
-      "email": "nicolas@correo.com",
-      "user": "nikomax",
-      "phone": "3005121412",
-      "birthday": "22/10/2000",
+      "userName": "cristian santamaria",
+      "userEmail": "camilo.santamaria322@gmail.com",
+      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
       "id": 2
     },
     {
-      "name": "hola",
-      "email": "cristed1994@hotmail.com",
-      "user": "mquinoes",
-      "phone": "3015839907",
-      "birthday": "12/10/2020",
+      "email": "camilo.santamaria322@gmail.com",
+      "phoneNumber": "4510102",
+      "birthday": "1994-06-22",
       "id": 3
     },
     {
-      "name": "cristian",
-      "email": "cristian@prueba.com",
-      "user": "cristian2",
-      "phone": "23232",
-      "birthday": "22/10/2020",
+      "email": "camilo.santamaria322@gmail.com",
+      "phoneNumber": "dsdsds",
+      "birthday": "2021-07-21",
       "id": 4
     },
     {
-      "userName": "Mateo Jaramillo Quiroga",
-      "userEmail": "mateojaras@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJyYAEYmRCbv5zTWLpgnUwD_6SC__3ToMTz2CjAH=s96-c",
+      "email": "camilo.santamaria322@gmail.com",
+      "phoneNumber": "",
+      "birthday": "",
       "id": 5
     },
     {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
+      "email": "camilo.santamaria322@gmail.com",
+      "phoneNumber": "23232",
+      "birthday": "2021-07-21",
       "id": 6
     },
     {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
+      "email": "camilo.santamaria322@gmail.com",
+      "phoneNumber": "assa",
+      "birthday": "2021-06-15",
       "id": 7
     },
     {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
+      "email": "camilo.santamaria322@gmail.com",
+      "phoneNumber": "23232",
+      "birthday": "2021-07-21",
       "id": 8
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 9
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 10
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 11
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 12
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 13
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 14
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 15
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 16
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 17
-    },
-    {
-      "userName": "cristian santamaria",
-      "userEmail": "camilo.santamaria322@gmail.com",
-      "photoURL": "https://lh3.googleusercontent.com/a/AATXAJxk4c8JtES-c-cRMWa28f9JUb_WGZrhCi95cENk=s96-c",
-      "id": 18
     }
   ]
 }
