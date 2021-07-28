@@ -1,8 +1,11 @@
 //Constantes
 import { clientConstants } from './../types/client';
 
-//import axios from 'axios';
+//import Servicios;
 import clientAxios from './../../Infrastructure/services/api/axios';
+import {signInWithGoogle} from '../../Infrastructure/services/firebase/auth';
+import getUser from '../../Infrastructure/services/firebase/user/index'
+
 
 
 //Crear Acciones de clientes
@@ -96,6 +99,41 @@ const onlyClient = client =>({
     type:clientConstants.ONLY_CLIENT,
     payload:client
 })
+
+//Login
+export const loginClientAction = () =>{
+    return (dispatch) =>{
+        signInWithGoogle().then(r => {
+        dispatch(currentuser());
+        }).catch(error => {
+            console.log(error)
+        })
+        dispatch({type:clientConstants.LOGIN,
+        payload:"Se logeo"});
+    }
+}
+
+export const currentuser = () => {
+    return async(dispatch) =>{
+      
+        const client =getUser();
+        const responsecl = await clientAxios.post('/clients',client);
+        console.log(responsecl.data);
+        dispatch({type:clientConstants.CREATE_LOGIN_USER,payload:responsecl.data});
+    }
+}
+/*
+const Login = () =>({
+    type:clientConstants.LOGIN,
+    payload:"Se logeo"
+})
+
+
+const Logout = () =>({
+    type:clientConstants.LOGOUT,
+    payload:"Se deslogea"
+})
+*/
 
 /* En modificacion
 export const employeEditAction =async (id,name, phone, email,specialty,role) => {

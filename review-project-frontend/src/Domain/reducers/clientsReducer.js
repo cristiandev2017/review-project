@@ -3,7 +3,7 @@ import { clientConstants} from './../types/client';
 
 //Creamos el estado inicial
 const initialState = {
-    clients:[],
+    clients:null,
     error:null,
     loading:false,
     clientone:null,
@@ -61,6 +61,21 @@ const clientsReducer =(state=initialState, action) =>{
             return{
             ...state,
             clientone:action.payload
+            }
+        case clientConstants.LOGIN:
+            return{
+            ...state,
+            error:action.payload
+            }
+        case clientConstants.CREATE_LOGIN_USER:
+           return{
+           ...state,
+           clients:action.payload
+        }
+        case clientConstants.LOGOUT:
+            return{
+            ...state,
+            error:action.payload
             }
         default:
             return state;
