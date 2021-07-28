@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { RegisterClient } = require('../controller/client-controller');
+const { RegisterClient, DeleteClient } = require('../controller/client-controller');
 
-router.post('/register-client', RgegisterClient);
+router.post('/register-client', RegisterClient);
+router.delete('/delete-client', DeleteClient);
 
 module.exports = router;
