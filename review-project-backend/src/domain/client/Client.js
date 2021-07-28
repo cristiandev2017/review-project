@@ -2,7 +2,6 @@
 
 class Client {
   constructor(fullName, photoURL, email, phoneNumber, birthday) {
-    this.id = id;
     this.fullName = fullName;
     this.photoURL = photoURL;
     this.email = email;
