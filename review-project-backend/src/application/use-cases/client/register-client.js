@@ -7,6 +7,10 @@ async function createClient(fullName, photoURL, email, phoneNumber, birthday, Cl
             success: false
         };
     }
+    const clientExist = await ClientRepository.findByEmail(email);
+    if (clientExist) {
+        return clientExist;
+    }
     const client = new Client(fullName, photoURL, email, phoneNumber, birthday);
     const response = await ClientRepository.save(client);
     return response;

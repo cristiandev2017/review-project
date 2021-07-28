@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { registerClient } = require('../controller/client-controller');
+const { RegisterClient } = require('../controller/client-controller');
 
-router.post('/register-user', registerClient);
+router.post('/register-client', RgegisterClient);
 
 module.exports = router;
