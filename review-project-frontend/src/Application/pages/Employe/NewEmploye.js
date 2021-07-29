@@ -58,19 +58,25 @@ const NewEmploye = ({addNewEmployeAction}) =>{
     }
 
     return(
-    <div>
-        <h2>Agregar empleado</h2>
+    <div className="mt-4">
+    <div className="row">
+        <div className="col-3"></div>
+        <div className="col-6">
+         <h2 className="text-center">Agregar empleado</h2>
+        <hr/>
         <form onSubmit={submitAddEmploye}>
             <label>Nombre</label>
             <input 
                 type="text"
                 name="fullName"
+                className="form-control"
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}    
             />
             <label>URL de Foto</label>
              <input 
                 type="text"
+                className="form-control"
                 name="photoURL"
                 value={photoURL}
                 onChange={e => setPhotoURL(e.target.value)}    
@@ -78,16 +84,23 @@ const NewEmploye = ({addNewEmployeAction}) =>{
             Email
              <input 
                 type="text"
+                className="form-control"
                 name="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}    
             />
             Servicios
             <Select isMulti options={Servicename} onChange={Ddlhandle}></Select>
-            <p>Seleccionaste: {services + " "}</p>
-            <button type="submit"> Agregar</button>
+            <p>Seleccionaste:{services + " "}</p>
+            <button className="btn btn-primary btn-block" type="submit"> Agregar</button>
         </form>
+   
+        </div>
+        <div className="col-3"></div>
     </div>
+
+
+ </div>
     )
 }
 
