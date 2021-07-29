@@ -6,7 +6,14 @@ const initialState = {
     clients:[],
     error:null,
     loading:false,
-    clientone:null,
+    clientone:{
+            id:"",
+            name:"",
+            email:"",
+            photoURL:"",
+            phone:"",
+            birthday:"",
+            autenticado:false},
 }
 
 
@@ -61,6 +68,21 @@ const clientsReducer =(state=initialState, action) =>{
             return{
             ...state,
             clientone:action.payload
+            }
+        case clientConstants.LOGIN:
+            return{
+            ...state,
+            error:action.payload
+            }
+        case clientConstants.CREATE_LOGIN_USER:
+           return{
+           ...state,
+           clientone:action.payload
+        }
+        case clientConstants.LOGOUT:
+            return{
+            ...state,
+            error:action.payload
             }
         default:
             return state;

@@ -1,8 +1,11 @@
 //Constantes
 import { clientConstants } from './../types/client';
 
-//import axios from 'axios';
+//import Servicios;
 import clientAxios from './../../Infrastructure/services/api/axios';
+import {signInWithGoogle} from '../../Infrastructure/services/firebase/auth';
+import getUser from '../../Infrastructure/services/firebase/user/index'
+
 
 
 //Crear Acciones de clientes
@@ -97,17 +100,43 @@ const onlyClient = client =>({
     payload:client
 })
 
-/* En modificacion
-export const employeEditAction =async (id,name, phone, email,specialty,role) => {
-    return async (dispatch) =>{
-    dispatch(editEmploye())
-    const employe = {name:name, phone:phone, email:email, specialty: specialty,role:role}
-    const response = await clientAxios.put('/employes/'+id,employe);
+//Login
+export const loginClientAction = (phoneNumber,birthday) =>{
+    return (dispatch) =>{
+        signInWithGoogle().then(r => {
+        dispatch(currentuser(phoneNumber,birthday));
+        }).catch(error => {
+            console.log(error)
+        })
+        dispatch({type:clientConstants.LOGIN,
+        payload:"Se logeo"});
     }
 }
 
-const editEmploye = ()=>({
-    type:EDIT_EMPLOYE,
-    payload:true
-});
-*/
+export const currentuser = (phoneNumber,birthday) => {
+    return async(dispatch) =>{
+        const client =getUser();
+        //Para mi estado 
+        //Para la base de datos
+        const userdata = {
+            fullName:client.userName,
+            photoURL:client.photoURL,
+            email:client.userEmail,
+            phoneNumber:phoneNumber,
+            birthday:birthday
+        }
+        const responsecl = await clientAxios.post('/register-client',userdata);
+        //Para mi estado
+        const userstate = {        
+            id:responsecl._id,
+            fullName:responsecl.fullName,
+            photoURL:responsecl.photoURL,
+            phoneNumber:responsecl.phoneNumber,
+            birthday:birthday,
+            autenticado:true
+        } 
+        dispatch({type:clientConstants.CREATE_LOGIN_USER,payload:userstate});
+        //window.location.href="/test"
+    }
+}
+
