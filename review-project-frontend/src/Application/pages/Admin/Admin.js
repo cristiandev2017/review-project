@@ -21,6 +21,11 @@ function Admin() {
                 Ver Empleados
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin-editemployes">
+                Editar Empleados
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="col-6">

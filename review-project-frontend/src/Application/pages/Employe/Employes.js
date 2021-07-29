@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   listEmployesAction,
   deleteEmployeAction,
-  employeEditAction
+  onlyEmployeAction
 } from "../../../Domain/actions/employeActions.js";
 import "./static/style.css";
 
 
-function Employes() {
+function Employes({history}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +28,8 @@ function Employes() {
 
    const employeEdit= async (employe) =>{
     console.log("algo");
-    dispatch(await employeEditAction(employe.id, "Cristian Quiñones", employe.phone, employe.email,employe.specialty,employe.role))
+    dispatch(await onlyEmployeAction(employe));
+    history.push('/admin-editemployes');
    }
 
   //Traemos los datos

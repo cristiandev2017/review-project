@@ -124,11 +124,13 @@ const onlyEmploye = employe =>({
     payload:employe
 })
 
-export const employeEditAction =async (id,name, phone, email,specialty,role) => {
+export const employeEditAction =(email,services) => {
     return async (dispatch) =>{
-    dispatch(editEmploye())
-    const employe = {name:name, phone:phone, email:email, specialty: specialty,role:role}
-    await clientAxios.put('/employes/'+id,employe);
+    console.log("Entro a la accion");
+    dispatch(editEmploye());
+    const employe = {email:email, services:services}
+    const response =await clientAxios.patch('update-employee/',employe);
+    console.log("Que esta devolviendo",response);
     }
 }
 

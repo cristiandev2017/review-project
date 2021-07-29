@@ -19,6 +19,7 @@ const initialState = {
     error:null,
     loading:false,
     employeone:null,
+    _employeone:null
 }
 
 const employesReducer =(state=initialState, action) =>{
@@ -76,7 +77,7 @@ const employesReducer =(state=initialState, action) =>{
         case ONLY_EMPLOYE:
             return{
             ...state,
-            employeone:action.payload
+            _employeone:action.payload
             }
         case EDIT_EMPLOYE:
             return{
