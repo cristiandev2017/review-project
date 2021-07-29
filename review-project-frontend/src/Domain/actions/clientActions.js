@@ -116,15 +116,7 @@ export const loginClientAction = (phoneNumber,birthday) =>{
 export const currentuser = (phoneNumber,birthday) => {
     return async(dispatch) =>{
         const client =getUser();
-        //Para mi estado
-        const userstate = {        
-            name:client.userName,
-            email:client.userEmail,
-            photoURL:client.photoURL,
-            phone:phoneNumber,
-            birthday:birthday,
-            authenticated:true
-        }       
+        //Para mi estado 
         //Para la base de datos
         const userdata = {
             fullName:client.userName,
@@ -134,8 +126,17 @@ export const currentuser = (phoneNumber,birthday) => {
             birthday:birthday
         }
         const responsecl = await clientAxios.post('/register-client',userdata);
-        //console.log(responsecl.data);
-        dispatch({type:clientConstants.CREATE_LOGIN_USER,payload:responsecl.data});
+        //Para mi estado
+        const userstate = {        
+            id:responsecl._id,
+            fullName:responsecl.fullName,
+            photoURL:responsecl.photoURL,
+            phoneNumber:responsecl.phoneNumber,
+            birthday:birthday,
+            autenticado:true
+        } 
+        dispatch({type:clientConstants.CREATE_LOGIN_USER,payload:userstate});
+        //window.location.href="/test"
     }
 }
 

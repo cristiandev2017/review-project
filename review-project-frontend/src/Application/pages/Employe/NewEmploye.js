@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from "redux";
+import Select from "react-select";
 //Acciones de redux
 import {addNewEmployeAction} from '../../../Domain/actions/employeActions'; 
 
@@ -8,12 +9,29 @@ import {addNewEmployeAction} from '../../../Domain/actions/employeActions';
 const NewEmploye = ({addNewEmployeAction}) =>{
 
     //Datos de mi formulario
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [photoURL, setPhotoURL] = useState('');
     const [email, setEmail] = useState('');
-    const [specialty, setSpecialty] = useState('');
-    const [role, setRole] = useState('');
+    var [services, setServices] = useState();
 
+    var Servicename = [
+        {
+            value:1,
+            label:"Corte de cabello"
+        },
+        {
+            value:2,
+            label:"Manicure"
+        },
+        {
+            value:3,
+            label:"Pedicure"
+        },
+        {
+            value:4,
+            label:"Corte de barba"
+        },
+    ]
     //Temporalmente con useDispatch y useSelector
     //const dispatch = useDispatch();
 
@@ -28,31 +46,34 @@ const NewEmploye = ({addNewEmployeAction}) =>{
 
         //Ejecutar accion del nuevo elemento
         addEmploye({
-            name,
-            phone, 
+            fullName,
+            photoURL,
             email,
-            specialty,
-            role
+            services,
         })        
+    }
+    
+    var Ddlhandle = (e) =>{
+        setServices(Array.isArray(e)?e.map(x=>x.label):[]);
     }
 
     return(
     <div>
         <h2>Agregar empleado</h2>
         <form onSubmit={submitAddEmploye}>
-            Name
+            <laberl>Nombre</laberl>
             <input 
                 type="text"
-                name="name"
-                value={name}
-                onChange={e => setName(e.target.value)}    
+                name="fullName"
+                value={fullName}
+                onChange={e => setFullName(e.target.value)}    
             />
-            Phone
+            <label>URL de Foto</label>
              <input 
                 type="text"
-                name="phone"
-                value={phone}
-                onChange={e => setPhone(e.target.value)}    
+                name="photoURL"
+                value={photoURL}
+                onChange={e => setPhotoURL(e.target.value)}    
             />
             Email
              <input 
@@ -61,20 +82,9 @@ const NewEmploye = ({addNewEmployeAction}) =>{
                 value={email}
                 onChange={e => setEmail(e.target.value)}    
             />
-            Especialidad
-             <input 
-                type="text"
-                name="specialty"
-                value={specialty}
-                onChange={e => setSpecialty(e.target.value)}    
-            />
-            Rol
-             <input 
-                type="text"
-                name="role"
-                value={role}
-                onChange={e => setRole(e.target.value)}    
-            />
+            Servicios
+            <Select isMulti options={Servicename} onChange={Ddlhandle}></Select>
+            <p>Seleccionaste: {services + " "}</p>
             <button type="submit"> Agregar</button>
         </form>
     </div>

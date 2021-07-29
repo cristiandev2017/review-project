@@ -20,7 +20,7 @@ const Login = ({ loginClientAction, history }) => {
         <div className="col-3"></div>
         <div className="col-6">
           <center>
-            <h2>Login/Registro</h2>
+            <h1>Login/Registro</h1>
             <hr/>
             <h5>Por favor digite su numero de telefono:</h5>
             <input
@@ -38,7 +38,8 @@ const Login = ({ loginClientAction, history }) => {
               value={birthday}
               onChange={(e) => setbirthday(e.target.value)}
             ></input>
-            <hr/><button className="btn btn-outline-danger btn-block" onClick={handleGoogleAuth}>Autenticar con Google</button>
+            <hr></hr>
+            <button className="btn btn-outline-danger btn-block" onClick={handleGoogleAuth}>Autenticar con Google</button>
           </center>
         </div>
         <div className="col-3"></div>

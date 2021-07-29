@@ -10,7 +10,7 @@ const Home = () => {
         <div className="row">
           <div className="col-6"></div>
           <div className="col-5 mt-5">
-            <h1 className="text-align-center">Bienvenido</h1>
+            <h1 className="text-align-center">Bienvenid@</h1>
             <div className="rounded-top border border-dark">
               <p className="ml-2" style={{ color: "black" }}>
                 Esta es una aplicacion diseñada para el control de citas de un
@@ -51,7 +51,7 @@ const Home = () => {
         </p>
         <div className="row">
           <div className="col">
-            <div className="card" style={{ width: "18rem;" }}>
+            <div className="card" >
               <div className="card-body">
                 <h5 className="card-title text-white bg-primary mb-3">
                   Servicio de Peluqueria
@@ -67,7 +67,7 @@ const Home = () => {
             </div>
           </div>
           <div className="col">
-            <div className="card" style={{ width: "18rem;" }}>
+            <div className="card" >
               <div className="card-body">
                 <h5 className="card-title text-white bg-primary mb-3">
                   Servicio de Peluqueria
@@ -83,7 +83,7 @@ const Home = () => {
             </div>
           </div>
           <div className="col">
-            <div className="card" style={{ width: "18rem;" }}>
+            <div className="card" >
               <div className="card-body">
                 <h5 className="card-title text-white bg-primary mb-3">
                   Servicio de Peluqueria

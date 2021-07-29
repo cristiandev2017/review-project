@@ -6,12 +6,14 @@ const initialState = {
     clients:[],
     error:null,
     loading:false,
-    clientone:{name:"",
+    clientone:{
+            id:"",
+            name:"",
             email:"",
             photoURL:"",
             phone:"",
             birthday:"",
-            authenticated:true},
+            autenticado:false},
 }
 
 
