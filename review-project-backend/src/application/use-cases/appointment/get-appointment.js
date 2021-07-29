@@ -5,7 +5,7 @@ async function getAllAppointments(AppointmentRepository) {
 async function getAppointmentById(id, AppointmentRepository) {
     if (!id) {
         return {
-            errorMessage: 'Necesito el ID de la cita que se va a actualizar',
+            errorMessage: 'No hay ID para buscar en la BD',
             success: false
         }
     }

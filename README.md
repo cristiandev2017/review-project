@@ -31,6 +31,8 @@ Citas:
 - Mostrar citas = URLBASE/get-appointments
 - Obtener cita por id = URLBASE/get-appointment-by-id
 
+Servicio
+
 ### Integrantes
 
 -Cristian Santamaria

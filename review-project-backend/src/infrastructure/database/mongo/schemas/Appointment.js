@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 
 const AppointmentSchema = mongoose.Schema({
     date: {
-        type: Date
+        type: Date,
+        required: true,
+        unique: true
     },
     serviceID: {
         type: String

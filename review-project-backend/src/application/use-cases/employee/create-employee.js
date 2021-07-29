@@ -9,7 +9,10 @@ async function createEmployee(fullName, photoURL, email, services, EmployeeRepos
     }
     const employeeExist = await EmployeeRepository.findByEmail(email);
     if (employeeExist) {
-        return employeeExist;
+        return {
+            errorMessage: "El empleado ya existe",
+            success: false
+        };
     }
     const employee = new Employee(fullName, photoURL, email, services);
     return await EmployeeRepository.save(employee);
