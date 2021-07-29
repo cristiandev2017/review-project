@@ -8,12 +8,13 @@ import NotFoundPage from "./../layout/NotFoundPage";
 import NewClient from "../pages/Client/NewClient";
 import Register from "./../pages/Auth/Register";
 import Login from "./../pages/Auth/Login";
-import Test from "./../pages/Auth/Test";
+import Admin from "../pages/Admin/Admin";
 //import { connect } from "react-redux";
 //import { getUser } from "../../Domain/selectors/user";
 
 //Manejador de paginas publicas y privadas
-import { PrivateRoute, PublicRoute } from "./Routes";
+//import { PrivateRoute, PublicRoute } from "./Routes";
+import { PublicRoute } from "./Routes";
 import {auth} from "../../Infrastructure/services/firebase/firebase"
 //Estaticos
 import Header from "../layout/Header";
@@ -53,21 +54,21 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <PrivateRoute
+          <PublicRoute
             exact
-            path="/newemploye"
+            path="/admin-newemploye"
             component={NewEmploye}
            authenticated={this.state.authenticated}
           />
-          <PrivateRoute
+          <PublicRoute
             exact
-            path="/listemployes"
+            path="/admin-listemployes"
             component={Employes}
            authenticated={this.state.authenticated}
           />
-          <PrivateRoute
+          <PublicRoute
             exact
-            path="/newclient"
+            path="/admin-newclient"
             component={NewClient}
            authenticated={this.state.authenticated}
           />
@@ -78,7 +79,7 @@ class App extends Component {
             authenticated={this.state.authenticated}
           />
           <PublicRoute exact path="/login" component={Login} authenticated={this.state.authenticated} />
-          <Route exact path="/test" component={Test} />
+          <Route exact path="/admin" component={Admin} />
           <Route path={"*"} component={NotFoundPage} />
         </Switch>
         <Footer />

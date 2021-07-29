@@ -61,7 +61,7 @@ const NewEmploye = ({addNewEmployeAction}) =>{
     <div>
         <h2>Agregar empleado</h2>
         <form onSubmit={submitAddEmploye}>
-            <laberl>Nombre</laberl>
+            <label>Nombre</label>
             <input 
                 type="text"
                 name="fullName"
