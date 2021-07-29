@@ -10,10 +10,12 @@ class EmployeeRepositoryMongo extends EmployeeRepository {
     async save(employee) {
         const { fullName, photoURL, email, services } = employee;
         const mongoEmployee = new EmployeeSchema({ fullName, photoURL, email, services });
-        console.log("esto es mongoEmployee: ", mongoEmployee)
         await mongoEmployee.save();
-
         return new Employee(mongoEmployee.fullName, mongoEmployee.photoURL, mongoEmployee.email, mongoEmployee.services);
+    }
+
+    async updateEmployeeServices(id, employee) {
+        return EmployeeSchema.findByIdAndUpdate(id, employee, { new: true })
     }
 
     async findByEmail(email) {
