@@ -15,7 +15,8 @@ async function rescheduleDate(id, date, AppointmentRepository) {
         };
     }
     const appointment = new Appointment(date, serviceID, serviceValue);
-    return await AppointmentRepository.update(appointment);
+    console.log("esto es lo que se va a guardar", appointment);
+    return await AppointmentRepository.update(_id, appointment);
 }
 
 module.exports = { rescheduleDate };

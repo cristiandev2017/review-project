@@ -14,8 +14,8 @@ class AppointmentRepositoryMongo extends AppointmentRepository {
         return new Appointment(mongoAppointment.date, mongoAppointment.serviceID, mongoAppointment.serviceValue);
     }
 
-    async update(id, date) {
-        return await AppointmentSchema.findByIdAndUpdate(id, date, { new: true });
+    async update(id, appointment) {
+        return await AppointmentSchema.findByIdAndUpdate(id, appointment, { new: true });
     }
 
     async findAll() {
