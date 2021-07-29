@@ -8,10 +8,9 @@ const Header = () => {
    url = window.location.pathname;
    valadmin =`${url.includes("/admin") ? true : false}`;
   });
-
   return (
   <nav className="navbar navbar-dark bg-primary">
-    {valadmin ? (<Link to="/admin" className="btn btn-secondary">ADMINISTRACION</Link>) :(<Link to="/" className="navbar-brand">HairCut</Link>
+    {valadmin == 'true' ? (<Link to="/admin" className="btn btn-secondary">ADMINISTRACION</Link>) :(<Link to="/" className="navbar-brand">HairCut</Link>
     )}
     <div className="right">
     {auth().currentUser? (

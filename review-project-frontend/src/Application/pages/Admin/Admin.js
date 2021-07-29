@@ -17,7 +17,7 @@ function Admin() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/admin">
+              <Link className="nav-link" to="/admin-listemployes">
                 Ver Empleados
               </Link>
             </li>

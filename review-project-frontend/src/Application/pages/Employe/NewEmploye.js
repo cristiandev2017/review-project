@@ -2,15 +2,16 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from "redux";
 import Select from "react-select";
+import { withRouter } from "react-router-dom";
 //Acciones de redux
 import {addNewEmployeAction} from '../../../Domain/actions/employeActions'; 
 
 
-const NewEmploye = ({addNewEmployeAction}) =>{
+const NewEmploye = ({addNewEmployeAction,history}) =>{
 
     //Datos de mi formulario
     const [fullName, setFullName] = useState('');
-    const [photoURL, setPhotoURL] = useState('');
+    var [photoURL, setPhotoURL] = useState('');
     const [email, setEmail] = useState('');
     var [services, setServices] = useState();
 
@@ -43,14 +44,15 @@ const NewEmploye = ({addNewEmployeAction}) =>{
         e.preventDefault();
         
         //Algunas validaciones del formulario
-
+        photoURL = "http://imagen.com"
         //Ejecutar accion del nuevo elemento
         addEmploye({
             fullName,
             photoURL,
             email,
             services,
-        })        
+        })
+        history.push('/admin-listemployes');        
     }
     
     var Ddlhandle = (e) =>{

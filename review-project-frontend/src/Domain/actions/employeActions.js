@@ -57,7 +57,7 @@ export function listEmployesAction(){
         dispatch(listEmployes());
         try{
             //Hago mi peticion HTTP
-            const response = await clientAxios.get('/employes');
+            const response = await clientAxios.get('/get-employees');
             dispatch(listEmployesSuccess(response.data));
 
         }catch(error){
@@ -82,15 +82,18 @@ const listEmployesFailure = () =>({
 })
 
 //Eliminar empleados
-export function deleteEmployeAction(id){
+export function deleteEmployeAction(email){
     return async (dispatch) =>{
+        let body = {email:email}
         dispatch(deleteEmploye());
         try{
-            await clientAxios.delete('/employes/'+id);
+            const response = await clientAxios.delete('delete-employee',{data:body});
             dispatch(deleteEmployeSuccess())
             alert("Se ha eliminado correctamente");
+            console.log("Haber que devuelve ",response);
         }catch(error){
             dispatch(deleteEmployeFailure);
+            console.log("Persiste el error");
         }
     }
 }

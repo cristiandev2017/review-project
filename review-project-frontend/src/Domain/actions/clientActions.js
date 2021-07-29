@@ -46,7 +46,7 @@ export function listClientsAction(){
     return async(dispatch) =>{
         try{
             //Hago mi peticion HTTP
-            const response = await clientAxios.get('/clients');
+            const response = await clientAxios.get('/get-clients');
             dispatch(listClientSuccess(response.data));
 
         }catch(error){

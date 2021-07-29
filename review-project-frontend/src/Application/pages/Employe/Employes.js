@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import {
   listEmployesAction,
   deleteEmployeAction,
-  onlyEmployeAction,
   employeEditAction
 } from "../../../Domain/actions/employeActions.js";
+import "./static/style.css";
 
 
 function Employes() {
@@ -18,44 +17,51 @@ function Employes() {
     listEmployes();
   }, [dispatch]);
 
-  const deleteEmploye = (id) => {
-    dispatch(deleteEmployeAction(id));
-    dispatch(listEmployesAction());
+  
+  const deleteEmploye = (email) => {
+    dispatch(deleteEmployeAction(email));
+    setTimeout(() => {
+      dispatch(listEmployesAction());
+    }, 2000);
+    //
   };
 
-  const [pruebam, setpruebam] = useState([]);
-
-  const employeone = (employe) => {
-    dispatch(onlyEmployeAction(employe));
-    console.log("Todo el objeto seleccionado", employe);
-    setpruebam([employe.name, employe.phone]);
-    //document.getElementById('verEmpleado').innerHTML = `<li style="color:red">${employe.name}</li><li style="color:red">${employe.phone}</li>`;
-  };
-   
    const employeEdit= async (employe) =>{
     console.log("algo");
     dispatch(await employeEditAction(employe.id, "Cristian Quiñones", employe.phone, employe.email,employe.specialty,employe.role))
    }
 
   //Traemos los datos
-  const employes = useSelector((state) => state.employesReducer.employes);
-    
+  const employes = useSelector((state) => state.employesReducer.employes);  
   return (
     <div>
-      <h1>List Employes</h1>
-      <ul>
-        {employes.map((employe) => (
-          <li key={employe.id}>
-            {employe.name}{" "}
-            <button onClick={() => deleteEmploye(employe.id)}>Eliminar</button>
-            <button onClick={() => employeone(employe)}>Ver</button>
-            <button onClick={() =>employeEdit(employe)}>Edit</button>
-          </li>
-        ))}
-      </ul>
-        <div id="verEmpleado">
-          <h1>{pruebam}</h1>
-        </div>
+      <h1 className="text-center">Administra tus Empleados</h1>
+      <table className="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Email</th>
+      <th scope="col">Servicios</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {employes.map((employe,index)=>(
+    <tr key={employe.id}>
+      <th scope="row">{index + 1}</th>
+      <td>{employe.fullName}</td>
+      <td><img className="img-p" src="https://recursos.bps.com.es/files/680/75.jpg"/></td>
+      <td>{employe.email}</td>
+      <td>{employe.services.map((service)=>(
+          <li>{service}</li>
+        ))}</td>
+      <td><button className="btn btn-danger" onClick={() => deleteEmploye(employe.email)}>Eliminar</button><button className="btn btn-warning" onClick={() =>employeEdit(employe)}>Editar</button></td>
+    </tr>
+    ))}
+  </tbody>
+</table>
     </div>
   );
 }

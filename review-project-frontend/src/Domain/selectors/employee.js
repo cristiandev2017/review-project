@@ -1,0 +1,1 @@
+export const getEmploye = state => state.employesReducer.employes;
