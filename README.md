@@ -23,6 +23,14 @@ Empleados:
 - Obtener empleado por email = URLBASE/get-employee-by-email
 - Eliminar empleado por email = URLBASE/delete-employee
 
+Citas:
+
+- Agendar cita = URLBASE/schedule-appointment
+- Reagendar cita = URLBASE/reschedule-appointment
+- Cancelar cita = URLBASE/cancel-appointment
+- Mostrar citas = URLBASE/get-appointments
+- Obtener cita por id = URLBASE/get-appointment-by-id
+
 ### Integrantes
 
 -Cristian Santamaria
