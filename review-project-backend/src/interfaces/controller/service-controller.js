@@ -1,6 +1,7 @@
 const { createService } = require('../../application/use-cases/service/create-service');
 const { getAllServices, getServiceByName } = require('../../application/use-cases/service/get-service');
 const { deleteService } = require('../../application/use-cases/service/delete-service');
+const { updateServiceValue } = require('../../application/use-cases/service/update-service');
 const { ServiceRepositoryMongo } = require('../../infrastructure/repositories/service-repository');
 
 async function CreateService(req, res) {
@@ -38,4 +39,13 @@ async function DeleteService(req, res) {
     }
 }
 
-module.exports = { CreateService, GetAllServices, GetServiceByName, DeleteService };
+async function UpdateServiceValue(req, res) {
+    try {
+        const { name, value } = req.body;
+        res.json(await updateServiceValue(name, value, ServiceRepositoryMongo.prototype))
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+module.exports = { CreateService, GetAllServices, GetServiceByName, DeleteService, UpdateServiceValue };

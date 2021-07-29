@@ -7,12 +7,12 @@ async function createService(name, description, value, employeeID, ServiceReposi
             success: false
         }
     }
-    const serviceExist = await ServiceRepository.findByName(name);
-    if (serviceExist) {
+    const serviceExists = await ServiceRepository.findByName(name);
+    if (serviceExists) {
         return {
-            errorMessage: "Ya existe un servicio con este nombre",
+            errorMessage: 'El servicio que intenta crear ya existe',
             success: false
-        };
+        }
     }
     const service = new Service(name, description, value, employeeID);
     return await ServiceRepository.save(service);

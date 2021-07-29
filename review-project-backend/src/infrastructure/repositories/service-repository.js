@@ -7,6 +7,7 @@ class ServiceRepositoryMongo extends ServiceRepository {
         super();
     }
     async save(service) {
+        console.log(service);
         const { name, description, value, employeeID } = service;
         const mongoService = new ServiceSchema({ name, description, value, employeeID });
         await mongoService.save();

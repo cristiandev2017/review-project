@@ -33,6 +33,12 @@ Citas:
 
 Servicio
 
+- Crear Servicio = URLBASE/create-service
+- Actualizar precio del servicio = URLBASE/update-service-value
+- Obtener todos los servicios = URLBASE/get-services
+- Obtener servicio por nombre = URLBASE/get-service-by-name
+- Borrar servicio por nombre = URLBASE/delete-service
+
 ### Integrantes
 
 -Cristian Santamaria
