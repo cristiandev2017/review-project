@@ -22,15 +22,15 @@ class ClientRepositoryMongo extends ClientRepository {
   }
 
   async findByEmail(email) {
-    return ClientSchema.findOne({ email: email });
+    return await ClientSchema.findOne({ email: email });
   }
 
   async delete(email) {
-    return ClientSchema.deleteOne({ email: email });
+    return await ClientSchema.deleteOne({ email: email });
   }
 
   async findAll() {
-    return ClientSchema.find({});
+    return await ClientSchema.find({});
   }
 }
 module.exports = { ClientRepositoryMongo };

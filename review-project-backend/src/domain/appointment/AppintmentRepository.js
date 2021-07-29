@@ -1,19 +1,15 @@
 'use-strict';
 
 module.exports = class {
-    save(employee) {
+    save(appointment) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    updateServices(id, services) {
+    update(id, date) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    delete(email) {
-        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
-    }
-
-    findByEmail(email) {
+    delete(id) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 

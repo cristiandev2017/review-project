@@ -15,19 +15,19 @@ class EmployeeRepositoryMongo extends EmployeeRepository {
     }
 
     async updateEmployeeServices(id, employee) {
-        return EmployeeSchema.findByIdAndUpdate(id, employee, { new: true })
+        return await EmployeeSchema.findByIdAndUpdate(id, employee, { new: true })
     }
 
     async findByEmail(email) {
-        return EmployeeSchema.findOne({ email: email });
+        return await EmployeeSchema.findOne({ email: email });
     }
 
     async delete(email) {
-        return EmployeeSchema.deleteOne({ email: email });
+        return await EmployeeSchema.deleteOne({ email: email });
     }
 
     async findAll() {
-        return EmployeeSchema.find({});
+        return await EmployeeSchema.find({});
     }
 }
 
