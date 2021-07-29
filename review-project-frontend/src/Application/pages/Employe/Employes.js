@@ -7,7 +7,8 @@ import {
   deleteEmployeAction,
   onlyEmployeAction,
   employeEditAction
-} from "../../Domain/actions/employeActions";
+} from "../../../Domain/actions/employeActions.js";
+
 
 function Employes() {
   const dispatch = useDispatch();

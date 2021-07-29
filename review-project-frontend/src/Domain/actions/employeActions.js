@@ -26,7 +26,7 @@ export function addNewEmployeAction(employe){
         dispatch(addEmploye())
         try {
             //Peticion a la base de datos
-            await clientAxios.post('employes',employe);
+            await clientAxios.post('create-employee',employe);
             //Si todo sale bien 
             dispatch(addEmployeSuccess(employe));
             alert("Se ha creado correctamente");
