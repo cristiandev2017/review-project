@@ -1,4 +1,5 @@
 const { createEmployee } = require('../../application/use-cases/employee/create-employee');
+const { getEmployeeByEmail, getAllEmployees } = require('../../application/use-cases/employee/get-employee');
 const {
     EmployeeRepositoryMongo
 } = require('../../infrastructure/repositories/employee-repository');
@@ -6,7 +7,6 @@ const {
 async function CreateEmployee(req, res) {
     try {
         const { fullName, photoURL, email, services } = req.body;
-        console.log("esto esta llegando en el body: ", req.body);
         const employee = await createEmployee(fullName, photoURL, email, services, EmployeeRepositoryMongo.prototype);
         res.json(employee);
     } catch (error) {
@@ -14,5 +14,21 @@ async function CreateEmployee(req, res) {
     }
 }
 
+async function GetEmployeeByEmail(req, res) {
+    try {
+        const { email } = req.body;
+        res.json(await getEmployeeByEmail(email, EmployeeRepositoryMongo.prototype));
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
 
-module.exports = { CreateEmployee };
+async function GetAllEmployees(req, res) {
+    try {
+        res.json(await getAllEmployees(EmployeeRepositoryMongo.prototype))
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+module.exports = { CreateEmployee, GetAllEmployees, GetEmployeeByEmail };

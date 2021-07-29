@@ -17,15 +17,15 @@ class EmployeeRepositoryMongo extends EmployeeRepository {
     }
 
     async findByEmail(email) {
-        return ClientSchema.findOne({ email: email });
+        return EmployeeSchema.findOne({ email: email });
     }
 
     async delete(email) {
-        return ClientSchema.deleteOne({ email: email });
+        return EmployeeSchema.deleteOne({ email: email });
     }
 
     async findAll() {
-        return ClientSchema.find({});
+        return EmployeeSchema.find({});
     }
 }
 
