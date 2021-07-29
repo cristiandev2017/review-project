@@ -1,4 +1,5 @@
 const { scheduleDate } = require('../../application/use-cases/appointment/schedule-appointment');
+const { getAllAppointments, getAppointmentById } = require('../../application/use-cases/appointment/get-appointment');
 const { AppointmentRepositoryMongo } = require('../../infrastructure/repositories/appointment-repository');
 
 async function ScheduleAppointment(req, res) {
@@ -11,4 +12,21 @@ async function ScheduleAppointment(req, res) {
     }
 }
 
-module.exports = { ScheduleAppointment };
+async function GetAllAppointments(req, res) {
+    try {
+        res.json(await getAllAppointments(AppointmentRepositoryMongo.prototype));
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+async function GetAppointmentById(req, res) {
+    try {
+        const { id } = req.body;
+        res.json(await getAppointmentById(id, AppointmentRepositoryMongo.prototype));
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
+module.exports = { ScheduleAppointment, GetAllAppointments, GetAppointmentById };

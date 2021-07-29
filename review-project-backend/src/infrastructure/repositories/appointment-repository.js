@@ -22,6 +22,10 @@ class AppointmentRepositoryMongo extends AppointmentRepository {
         return await AppointmentSchema.find({});
     }
 
+    async findById(id) {
+        return await AppointmentSchema.findById(id);
+    }
+
     async delete(id) {
         return AppointmentSchema.deleteOne({ _id: id });
     }
