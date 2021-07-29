@@ -3,7 +3,7 @@ const { ScheduleAppointment, GetAllAppointments, GetAppointmentById, DeleteAppoi
 
 router.post('/schedule-appointment', ScheduleAppointment);
 router.delete('/cancel-appointment', DeleteAppointment);
-router.patch('/reschedule-appointment', UpdateAppointment);
+router.put('/reschedule-appointment', UpdateAppointment);
 router.get('/get-appointments', GetAllAppointments);
 router.get('/get-appointment-by-id', GetAppointmentById);
 
