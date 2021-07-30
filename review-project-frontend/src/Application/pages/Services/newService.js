@@ -2,11 +2,11 @@ import React,{useState} from 'react'
 
 import {connect} from 'react-redux';
 import { bindActionCreators } from "redux";
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom"; -> history
 //Acciones de redux
 import {addNewServiceAction} from '../../../Domain/actions/serviceActions'; 
-
-function NewService({addNewServiceAction,history}) {
+//history
+function NewService({addNewServiceAction}) {
   //Datos de mi formulario
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -31,7 +31,7 @@ function NewService({addNewServiceAction,history}) {
             value,
             employeeID,
         })
-        history.push('/admin');        
+        //history.push('/admin');        
     }
     
 
@@ -61,7 +61,7 @@ function NewService({addNewServiceAction,history}) {
             />
             <label>Valor</label>
              <input 
-                type="text"
+                type="number"
                 className="form-control"
                 name="value"
                 value={value}

@@ -1,11 +1,72 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
-function Services() {
-    return (
-        <div>
-            <h1>Lista de servicios</h1>
-        </div>
-    )
+import { useSelector, useDispatch } from "react-redux";
+import {
+  listEmployesAction,
+  deleteEmployeAction,
+  onlyEmployeAction
+} from "../../../Domain/actions/employeActions.js";
+
+function Services({history}) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const listEmployes = () => dispatch(listEmployesAction());
+    listEmployes();
+  }, [dispatch]);
+
+  
+  const deleteEmploye = (email) => {
+    dispatch(deleteEmployeAction(email));
+    setTimeout(() => {
+      dispatch(listEmployesAction());
+    }, 2000);
+    //
+  };
+
+   const employeEdit= async (employe) =>{
+    console.log("algo");
+    dispatch(await onlyEmployeAction(employe));
+    history.push('/admin-editemployes');
+   }
+
+  //Traemos los datos
+  const employes = useSelector((state) => state.employesReducer.employes);  
+  return (
+    <div>
+      <h1 className="text-center">Administra tus Servicios</h1>
+      <table className="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Servicios</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {employes.map((employe,index)=>(
+    <tr key={employe.id}>
+      <th scope="row">{index + 1}</th>
+      <td>{employe.fullName}</td>
+      <td><img className="img-p" src="https://recursos.bps.com.es/files/680/75.jpg"/></td>
+      <td>{employe.email}</td>
+      <td>{employe.services.map((service)=>(
+          <li>{service}</li>
+        ))}</td>
+      <td><button className="btn btn-danger" onClick={() => deleteEmploye(employe.email)}>Eliminar</button><button className="btn btn-warning" onClick={() =>employeEdit(employe)}>Editar</button></td>
+    </tr>
+    ))}
+  </tbody>
+</table>
+    </div>
+  );
 }
 
 export default Services;
+
+//listServicesAction
+//deleteServiceAction(email)
+//onlyServiceAction

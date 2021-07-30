@@ -1,25 +1,52 @@
 //Constantes
 import { serviceConstants } from '../types/service';
-
 //import Servicios;
 import clientAxios from '../../Infrastructure/services/api/axios';
+//
+import Service from './../aggregates/service/service';
+import Name from './../aggregates/service/values/name';
+import Description from './../aggregates/service/values/description';
+import Value from './../aggregates/service/values/value';
+import EmployeeID from '../aggregates/service/values/employeeID';
+
 
 
 //Crear Acciones de servicios
 export function addNewServiceAction(service){
+    const {name,description,value,employeeID} = service;
     return async (dispatch) =>{
         dispatch(addService());
         try {
+            const service = getService( name,description,value,employeeID);
             //Peticion a la base de datos
             await clientAxios.post('/create-service',service);
             //Si todo sale bien 
             dispatch(addServiceSuccess(service));
             alert("Se ha creado correctamente");
         } catch (error) {
-            dispatch(addServiceFailure(true));
+            console.log(error.message,name,description,value);
+            dispatch(addServiceFailure(error.message));
         }
     }
 }
+
+function getService(name,description,value,employeeID) {
+    const newService = new Service (
+        new Name(name),
+        new Description(description),
+        new Value(parseFloat(value)),
+        new EmployeeID(employeeID)
+    )
+    const service = {
+        name: newService.name.name,
+        description: newService.description.description,
+        value: newService.value.value,
+        employeeID:newService.employeeID.employeeID
+    }
+    return service;
+}
+
+
 
 const addService = () =>({
     type:serviceConstants.ADD_SERVICE,

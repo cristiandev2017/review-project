@@ -81,7 +81,7 @@ function Admin() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/admin-clients">
+              <Link className="nav-link" to="/admin-listservices">
                 Ver Servicios
               </Link>
             </li>
