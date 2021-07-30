@@ -31,7 +31,7 @@ const Clients = ({clients,deleteClientAction,listClientsAction}) => {
 
   return (
      <div>
-      <h1 className="text-center">Administra tus Clientes</h1>
+      <h1 className="text-center mt-4">Administra tus Clientes</h1>
       <table className="table">
   <thead>
     <tr>

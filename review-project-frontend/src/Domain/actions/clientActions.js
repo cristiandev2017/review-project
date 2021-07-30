@@ -65,10 +65,11 @@ const listClientFailure = () =>({
 })
 
 //Eliminar empleados
-export function deleteClientAction(id){
+export function deleteClientAction(email){
     return async (dispatch) =>{
+        let body = {email:email}
         try{
-            await clientAxios.delete('/clients/'+id);
+            await clientAxios.delete('/delete-client/',{data:body});
             dispatch(deleteClientsSuccess())
             alert("Se ha eliminado correctamente");
         }catch(error){
