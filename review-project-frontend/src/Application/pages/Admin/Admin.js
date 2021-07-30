@@ -40,7 +40,7 @@ function Admin() {
         </div>
         <div className="col-2"></div>
       </div>
-      <br/><br/>
+      <br/>
       <div className="row">
         <div className="col-4">
           <br />
@@ -67,6 +67,39 @@ function Admin() {
         </div>
         <div className="col-2"></div>
       </div>
+      <br/>
+       <div className="row">
+        <div className="col-4">
+          <br />
+          <ul className="nav nav-pills flex-column">
+            <li className="nav-item">
+              <div className="nav-link active">Administrador de Servicios</div>
+            </li>
+             <li className="nav-item">
+              <Link className="nav-link" to="/admin-clients">
+                Crear Servicios
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin-clients">
+                Ver Servicios
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="col-6">
+          <div className="card-body">
+            <h6 className="card-title">Acá algunas recomendaciones para el administrador</h6>
+            <hr></hr>
+            <p className="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+          </div>
+        </div>
+        <div className="col-2"></div>
+      </div>
+      <br/>
 </div>
   );
 }

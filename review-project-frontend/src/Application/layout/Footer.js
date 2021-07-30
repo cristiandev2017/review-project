@@ -5,8 +5,8 @@ import './static/style.css'
 const Footer = () => {
   return (
   <Fragment>
-    <br/><br/>
-    <footer className="footer-fn bg-light text-center text-lg-start">
+    <br/><br/><br/>
+    <footer className="footer-fn bg-light text-center text-lg-start mt-4">
       <div
         className="container text-center p-3"
       >
