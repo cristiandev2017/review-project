@@ -76,7 +76,7 @@ function Admin() {
               <div className="nav-link active">Administrador de Servicios</div>
             </li>
              <li className="nav-item">
-              <Link className="nav-link" to="/admin-clients">
+              <Link className="nav-link" to="/admin-newservice">
                 Crear Servicios
               </Link>
             </li>

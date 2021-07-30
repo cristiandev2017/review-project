@@ -13,6 +13,7 @@ import Login from "./../pages/Auth/Login";
 import Admin from "../pages/Admin/Admin";
 import Citas from './../pages/Client/Citas';
 import Clients from '../pages/Client/Clients';
+import NewService from '../pages/Services/NewService';
 //import { connect } from "react-redux";
 //import { getUser } from "../../Domain/selectors/user";
 
@@ -26,9 +27,6 @@ import Footer from "./../layout/Footer";
 
 //Rutas
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-
-
 
 
 class App extends Component {
@@ -96,6 +94,11 @@ class App extends Component {
             component={NewClient}
            authenticated={this.state.authenticated}
           />
+          <Route   
+            exact
+            path="/admin-newservice"
+            component ={NewService}
+          />  
           <Route
             exact
             path="/register"
