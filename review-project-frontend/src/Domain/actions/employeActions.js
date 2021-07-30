@@ -115,7 +115,7 @@ const deleteEmployeFailure = () => ({
 
 export function onlyEmployeAction(employe){
     return (dispatch) =>{
-        dispatch(onlyEmploye(employe))
+      dispatch(onlyEmploye(employe))
     }
 }
 
@@ -124,12 +124,22 @@ const onlyEmploye = employe =>({
     payload:employe
 })
 
-export const employeEditAction =(email,services) => {
+export function onlyEmployeEmailAction(employe){
+    return () =>{
+       try {
+       return clientAxios.get('get-employee-by-email',employe); 
+        //dispatch(onlyEmployeEmail(response))
+       } catch (error) {
+        console.log("ERROR");
+       } 
+    }
+}
+
+export const employeEditAction =(employe) => {
     return async (dispatch) =>{
-    console.log("Entro a la accion");
     dispatch(editEmploye());
-    const employe = {email:email, services:services}
-    const response =await clientAxios.patch('update-employee/',employe);
+    console.log("Servicios",employe);
+    const response =await clientAxios.put('update-employee',employe);
     console.log("Que esta devolviendo",response);
     }
 }

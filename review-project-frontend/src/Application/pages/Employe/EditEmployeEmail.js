@@ -3,18 +3,19 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Select from "react-select";
 import { withRouter } from "react-router-dom";
-import { getEmployeOne } from "./../../../Domain/selectors/employee";
-import { employeEditAction } from './../../../Domain/actions/employeActions';
+import { getEmployeOne } from "../../../Domain/selectors/employee";
+import { employeEditAction, onlyEmployeEmailAction } from '../../../Domain/actions/employeActions';
 
-function EditEmploye({ _employeone,employeEditAction, history }) {
-  const [fullName, setFullName] = useState(_employeone.fullName);
-  const [email, setEmail] = useState(_employeone.email);
+
+function EditEmployeEmail({ _employeone,employeEditAction,onlyEmployeEmailAction }) {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
   var [services, setServices] = useState();
+  const [_email, _setEmail] = useState();
 
   //Los que tiene seleccionados
-  var services_emp = _employeone.services;
-
   const editEmploye = (employe) => employeEditAction(employe);
+  const searchEmploye = (employe) => onlyEmployeEmailAction(employe);
 
   //Funcion para editar
   const submitEditEmploye = (e) => {
@@ -23,10 +24,6 @@ function EditEmploye({ _employeone,employeEditAction, history }) {
         email,
         services
     })
-    setTimeout(() => {
-      history.push('/admin-listemployes');  
-    }, 2000);
-    
   };
   var Servicename = [
     {
@@ -46,6 +43,14 @@ function EditEmploye({ _employeone,employeEditAction, history }) {
       label: "Corte de barba",
     },
   ];
+  
+  const searchWithEmail= async () =>{
+    const response = await searchEmploye({
+      _email
+    })
+    console.log("Prueba magica", response);
+   }
+  
   var Ddlhandle = (e) => {
     setServices(Array.isArray(e) ? e.map((x) => x.label) : []);
   };
@@ -55,6 +60,8 @@ function EditEmploye({ _employeone,employeEditAction, history }) {
         <div className="col-3"></div>
         <div className="col-6">
           <h3 className="text-center">Editar empleado</h3>
+          <label>Por favor digite el correo:</label>
+          <input onChange={(e) => _setEmail(e.target.value)} type="text" style={{width:"300px"}}></input><button className="btn btn-primary" onClick={searchWithEmail}>Buscar</button>
           <hr />
           <form onSubmit={submitEditEmploye}>
             <label>Nombre</label>
@@ -78,12 +85,6 @@ function EditEmploye({ _employeone,employeEditAction, history }) {
             Servicios
             <Select isMulti options={Servicename} onChange={Ddlhandle}></Select>
             <p>Seleccionaste:{services + " "}</p>
-            <p>
-              Los que tenias:
-              {services_emp.map((servi) => (
-                <li>{servi}</li>
-              ))}
-            </p>
             <button className="btn btn-primary btn-block" type="submit">
               {" "}
               Editar
@@ -103,8 +104,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ employeEditAction }, dispatch);
+  return bindActionCreators({ employeEditAction, onlyEmployeEmailAction }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditEmploye);
+export default connect(mapStateToProps, mapDispatchToProps)(EditEmployeEmail);
 //export default EditEmploye;

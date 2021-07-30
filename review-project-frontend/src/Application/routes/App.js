@@ -7,6 +7,7 @@ import Employes from "../pages/Employe/Employes";
 import NotFoundPage from "./../layout/NotFoundPage";
 import NewClient from "../pages/Client/NewClient";
 import EditEmploye from './../pages/Employe/EditEmploye';
+import EditEmployeEmail from './../pages/Employe/EditEmployeEmail';
 import Register from "./../pages/Auth/Register";
 import Login from "./../pages/Auth/Login";
 import Admin from "../pages/Admin/Admin";
@@ -23,6 +24,7 @@ import Footer from "./../layout/Footer";
 
 //Rutas
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 
 
 class App extends Component {
@@ -74,6 +76,12 @@ class App extends Component {
             component={EditEmploye}
            authenticated={this.state.authenticated}
           />
+          <Route
+            exact
+            path="/admin-editemployesemail"
+            component ={EditEmployeEmail}
+          >          
+          </Route>
           <PublicRoute
             exact
             path="/admin-newclient"
