@@ -1,11 +1,7 @@
 'use-strict';
 
 module.exports = class {
-    save(appointment) {
-        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
-    }
-
-    update(id, date) {
+    save(order) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
@@ -13,11 +9,11 @@ module.exports = class {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    findById(id){
+    findAll() {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    findAll() {
+    findAllByClientId(clientId) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 };
