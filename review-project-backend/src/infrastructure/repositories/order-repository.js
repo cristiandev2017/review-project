@@ -19,12 +19,12 @@ class OrderRepositoryMongo extends OrderRepository {
         return await OrderSchema.deleteOne({ _id: id });
     }
 
-    async findByid(id) {
-        return await OrderSchema.findOne({});
+    async findAll() {
+        return await OrderSchema.find({});
     }
 
     async findAllByClientId(clientId) {
-        return await OrderSchema.findMany({ clientId: clientId });
+        return await OrderSchema.find({ clientId: clientId });
     }
 }
 

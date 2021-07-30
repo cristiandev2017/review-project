@@ -4,7 +4,6 @@ const OrderSchema = mongoose.Schema({
     clientId: {
         type: String,
         required: true,
-        unique: true
     },
     appointmentsId: [{
         type: Array,
