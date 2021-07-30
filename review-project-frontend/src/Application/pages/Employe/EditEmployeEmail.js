@@ -46,7 +46,7 @@ function EditEmployeEmail({ _employeone,employeEditAction,onlyEmployeEmailAction
   
   const searchWithEmail= async () =>{
     const response = await searchEmploye({
-      _email
+      email:_email
     })
     console.log("Prueba magica", response);
    }

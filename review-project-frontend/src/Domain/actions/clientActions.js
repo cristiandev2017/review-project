@@ -48,7 +48,6 @@ export function listClientsAction(){
             //Hago mi peticion HTTP
             const response = await clientAxios.get('/get-clients');
             dispatch(listClientSuccess(response.data));
-
         }catch(error){
             dispatch(listClientFailure());
         }
@@ -128,10 +127,10 @@ export const currentuser = (phoneNumber,birthday) => {
         const responsecl = await clientAxios.post('/register-client',userdata);
         //Para mi estado
         const userstate = {        
-            id:responsecl._id,
-            fullName:responsecl.fullName,
-            photoURL:responsecl.photoURL,
-            phoneNumber:responsecl.phoneNumber,
+            id:responsecl.data._id,
+            fullName:responsecl.data.fullName,
+            photoURL:responsecl.data.photoURL,
+            phoneNumber:responsecl.data.phoneNumber,
             birthday:birthday,
             autenticado:true
         } 

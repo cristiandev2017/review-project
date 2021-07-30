@@ -49,7 +49,7 @@ function Admin() {
               <div className="nav-link active">Administrador de Clientes</div>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/admin-newemploye">
+              <Link className="nav-link" to="/admin-clients">
                 Ver Clientes
               </Link>
             </li>
