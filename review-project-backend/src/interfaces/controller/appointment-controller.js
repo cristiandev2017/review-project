@@ -34,7 +34,7 @@ async function GetAllAppointments(req, res) {
 
 async function GetAppointmentById(req, res) {
     try {
-        const { id } = req.body;
+        const { id } = req.query;
         res.json(await getAppointmentById(id, AppointmentRepositoryMongo.prototype));
     } catch (error) {
         res.status(500).send(error);

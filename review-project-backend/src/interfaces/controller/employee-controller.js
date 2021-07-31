@@ -36,7 +36,7 @@ async function DeleteEmployee(req, res) {
 
 async function GetEmployeeByEmail(req, res) {
     try {
-        const { email } = req.body;
+        const { email } = req.query;
         res.json(await getEmployeeByEmail(email, EmployeeRepositoryMongo.prototype));
     } catch (error) {
         res.status(500).send(error);
