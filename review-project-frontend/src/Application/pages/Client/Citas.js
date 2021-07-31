@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import UserInfo from './components/UserInfo';
+import AppointmentsManager from './components/AppointmentsManager';
 
-const Citas = () => {
-    return (
-        <div>
-            <h1>Componente para agendar citas</h1>
-        </div>
-    )
-}
+const Citas = (props) => {
+  return (
+    <div>
+      <UserInfo />
+      <AppointmentsManager />
+    </div>
+  );
+};
 
-export default Citas
+export default Citas;
