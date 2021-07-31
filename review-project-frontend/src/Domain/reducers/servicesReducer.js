@@ -57,6 +57,11 @@ const servicesReducer =(state=initialState, action) =>{
             loading: false,
             error: action.payload
             }
+        case serviceConstants.EDIT_SERVICE:
+            return{
+            ...state,
+            loading: action.payload
+            }
         case serviceConstants.ONLY_SERVICE:
             return{
             ...state,

@@ -9,14 +9,16 @@ import { bindActionCreators } from "redux";
 import { getServices } from "../../../Domain/selectors/service";
 import {
   listServicesAction,
-  deleteServiceAction
+  deleteServiceAction,
+  serviceEditAction
 } from "../../../Domain/actions/serviceActions.js";
 //import { withRouter } from "react-router-dom";
 
 function Services({
   services,
   listServicesAction,
-  deleteServiceAction
+  deleteServiceAction,
+  serviceEditAction
 }) {
 
   const [stateModal, setStateModal] = useState(false);
@@ -32,9 +34,14 @@ function Services({
     deleteServiceAction(name);
   };
 
+  const editServiceact = (service) =>serviceEditAction(service);
   
   const editService = () =>{
-    console.log("Valor", value)
+    editServiceact({
+      name,
+      value
+    })
+    setStateModal(false);
   }
   
   return (
@@ -102,7 +109,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { listServicesAction, deleteServiceAction },
+    { listServicesAction, deleteServiceAction, serviceEditAction },
     dispatch
   );
 };

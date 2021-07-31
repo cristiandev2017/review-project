@@ -155,9 +155,10 @@ const onlyEmploye = employe =>({
 })
 
 export function onlyEmployeEmailAction(employe){
-    return () =>{
+    console.log(employe);
+    return async () =>{
        try {
-       return clientAxios.get('get-employee-by-email',employe); 
+       return await clientAxios.post('get-employee-by-email',employe); 
         //dispatch(onlyEmployeEmail(response))
        } catch (error) {
         console.log("ERROR");

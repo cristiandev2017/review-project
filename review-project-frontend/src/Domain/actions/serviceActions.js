@@ -127,9 +127,15 @@ const onlyService = service =>({
 export const serviceEditAction= (service) =>{
     return async(dispatch)=>{
     dispatch(editService());
+    dispatch(listServicesAction());
     const response = await clientAxios.put('update-service-value',service);
     console.log(response);
     }
 }
+
+const editService = () => ({
+    type:serviceConstants.EDIT_SERVICE,
+    payload:true
+})
 
 
