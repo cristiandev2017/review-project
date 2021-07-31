@@ -66,6 +66,7 @@ const addServiceFailure = (error) =>({
 
 //Listar servicios
 export function listServicesAction(){
+    console.log("Ejecuta sss");
     return async(dispatch) =>{
         try{
             //Hago mi peticion HTTP
@@ -88,13 +89,14 @@ const listServiceFailure = () =>({
 })
 
 //Eliminar empleados
-export function deleteServiceAction(email){
+export function deleteServiceAction(name){
     return async (dispatch) =>{
-        let body = {email:email}
+        let body = {name:name}
         try{
             await clientAxios.delete('/delete-service/',{data:body});
             dispatch(deleteServiceSuccess())
             alert("Se ha eliminado correctamente");
+            dispatch(listServicesAction())
         }catch(error){
             dispatch(deleteServiceFailure());
         }
