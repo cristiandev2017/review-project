@@ -103,7 +103,6 @@ export function deleteServiceAction(name){
     }
 }
 
-
 const deleteServiceSuccess = () => ({
     type:serviceConstants.DELETE_SERVICE_SUCCESS,
     payload:'Se ha eliminado'
@@ -125,5 +124,12 @@ const onlyService = service =>({
     payload:service
 })
 
+export const serviceEditAction= (service) =>{
+    return async(dispatch)=>{
+    dispatch(editService());
+    const response = await clientAxios.put('update-service-value',service);
+    console.log(response);
+    }
+}
 
 

@@ -168,7 +168,6 @@ export function onlyEmployeEmailAction(employe){
 export const employeEditAction =(employe) => {
     return async (dispatch) =>{
     dispatch(editEmploye());
-    console.log("Servicios",employe);
     const response =await clientAxios.put('update-employee',employe);
     console.log("Que esta devolviendo",response);
     }

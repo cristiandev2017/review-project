@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 //Modal
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 
 //Redux
 //import { useSelector, useDispatch } from "react-redux";
@@ -9,19 +9,19 @@ import { bindActionCreators } from "redux";
 import { getServices } from "../../../Domain/selectors/service";
 import {
   listServicesAction,
-  deleteServiceAction,
-  onlyServiceAction,
+  deleteServiceAction
 } from "../../../Domain/actions/serviceActions.js";
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom";
 
 function Services({
   services,
   listServicesAction,
-  deleteServiceAction,
-  history,
+  deleteServiceAction
 }) {
 
-  const [estadoModal, setestadoModal] = useState(true)
+  const [stateModal, setStateModal] = useState(false);
+  const [name,setName] = useState('');
+  const [value,setValue] = useState('');
 
   useEffect(() => {
     const listServices = () => listServicesAction();
@@ -32,6 +32,11 @@ function Services({
     deleteServiceAction(name);
   };
 
+  
+  const editService = () =>{
+    console.log("Valor", value)
+  }
+  
   return (
     <div>
       <h1 className="text-center mt-4">Administra tus Servicios</h1>
@@ -61,29 +66,29 @@ function Services({
                 >
                   Eliminar
                 </button>
-                <button className="btn btn-warning">Editar</button>
+                <button  onClick={() => {setStateModal(true); setName(service.name); setValue(service.value)}} className="btn btn-warning">Editar</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-       <Modal isOpen={estadoModal}>
+       <Modal isOpen={stateModal}>
                 <ModalHeader>
                     Editar Servicio
                 </ModalHeader>
                 <ModalBody>
                   <form>
                     <label>Nombre</label>
-                    <input className="form-control"></input>
+                    <input className="form-control" value={name} disabled></input>
                     <label>Precio</label>
-                    <input className="form-control"></input>
-                    <button className="btn btn-primary">Agregar</button>
-                  </form>
+                    <input className="form-control" value={value} onChange={(e) => setValue(e.target.value)}></input>
+                    <hr/>
+                    <center>
+                     <Button onClick={() => editService()} color="primary">Confirmar</Button>
+                     <Button  onClick={() => { setStateModal(false) }}>Cerrar</Button>
+                    </center> 
+                </form>
                  </ModalBody>
-                <ModalFooter>
-                    <Button>Confirmar</Button>
-                    <Button  onClick={() => { setestadoModal(false) }}>Cerrar</Button>
-                </ModalFooter>
             </Modal>
     </div>
   );
