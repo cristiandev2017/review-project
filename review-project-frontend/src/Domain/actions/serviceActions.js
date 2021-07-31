@@ -2,13 +2,12 @@
 import { serviceConstants } from '../types/service';
 //import Servicios;
 import clientAxios from '../../Infrastructure/services/api/axios';
-//
+//Object values
 import Service from './../aggregates/service/service';
 import Name from './../aggregates/service/values/name';
 import Description from './../aggregates/service/values/description';
 import Value from './../aggregates/service/values/value';
 import EmployeeID from '../aggregates/service/values/employeeID';
-
 
 
 //Crear Acciones de servicios
@@ -23,8 +22,10 @@ export function addNewServiceAction(service){
             //Si todo sale bien 
             dispatch(addServiceSuccess(service));
             alert("Se ha creado correctamente");
+            setTimeout(() => {
+                window.location.href="/admin";
+            },1000);
         } catch (error) {
-            console.log(error.message,name,description,value);
             dispatch(addServiceFailure(error.message));
         }
     }

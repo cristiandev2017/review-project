@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from "redux";
 import Select from "react-select";
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom";
 //Acciones de redux
 import {addNewEmployeAction} from '../../../Domain/actions/employeActions'; 
 
 
-const NewEmploye = ({addNewEmployeAction,history}) =>{
+const NewEmploye = ({addNewEmployeAction}) =>{
 
     //Datos de mi formulario
     const [fullName, setFullName] = useState('');
@@ -51,8 +51,7 @@ const NewEmploye = ({addNewEmployeAction,history}) =>{
             photoURL,
             email,
             services,
-        })
-        history.push('/admin-listemployes');        
+        })      
     }
     
     var Ddlhandle = (e) =>{

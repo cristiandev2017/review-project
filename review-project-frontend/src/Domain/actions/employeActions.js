@@ -16,24 +16,54 @@ import {
     EDIT_EMPLOYE,
 } from '../types/employe.js';
 
-//import axios from 'axios';
+//Object Values
+import Employee from './../aggregates/employee/employee';
+import Fullname from './../aggregates/employee/values/fullName';
+import PhotoURL from './../aggregates/employee/values/photoURL';
+import Email from './../aggregates/employee/values/email';
+import Services from './../aggregates/employee/values/services';
 
+//import axios from 'axios';
 import clientAxios from './../../Infrastructure/services/api/axios';
+
 
 //Crear Acciones de Empleados
 export function addNewEmployeAction(employe){
+    const {fullName,photoURL,email,services} = employe;
     return async (dispatch) =>{
         dispatch(addEmploye())
         try {
+            const employe = getEmploye(fullName,photoURL,email,services)
             //Peticion a la base de datos
             await clientAxios.post('create-employee',employe);
             //Si todo sale bien 
             dispatch(addEmployeSuccess(employe));
             alert("Se ha creado correctamente");
+            setTimeout(() => {
+                window.location.href="/admin-listemployes";
+            },1000);
         } catch (error) {
-            dispatch(addEmployeFailure(true));
+            dispatch(addEmployeFailure(error.message));
+            console.log("ERRPR",error.message);
         }
     }
+}
+
+function getEmploye(fullName,photoURL,email,services) {
+    const newEmployee = new Employee (
+        new Fullname(fullName),
+        new PhotoURL(photoURL),
+        new Email(email),
+        new Services(services),
+    )
+    //DTO
+    const employe = {
+        fullName: newEmployee.fullName.fullName,
+        photoURL: newEmployee.photoURL.photoURL,
+        email: newEmployee.email.email,
+        services:newEmployee.services.services
+    }
+    return employe;
 }
 
 const addEmploye = () =>({

@@ -30,8 +30,7 @@ function NewService({addNewServiceAction}) {
             description,
             value,
             employeeID,
-        })
-        //history.push('/admin');        
+        })        
     }
     
 
