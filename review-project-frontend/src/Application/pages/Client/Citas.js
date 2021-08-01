@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import UserInfo from './components/UserInfo';
+import Order from './components/Order';
 
-const Citas = () => {
-    return (
-        <div>
-            <h1>Componente para agendar citas</h1>
-        </div>
-    )
-}
+const Citas = (props) => {
+  return (
+    <div className="d-block d-flex flex-column justify-content-center">
+      <UserInfo />
+      <Order />
+      <button className="btn btn-success border rounded mx-auto">CREAR ORDEN</button>
+    </div>
+  );
+};
 
-export default Citas
+export default Citas;
