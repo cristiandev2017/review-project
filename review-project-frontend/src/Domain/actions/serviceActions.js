@@ -52,7 +52,7 @@ function getService(name,description,value,employeeID) {
 export const addService = () =>({
     type:serviceConstants.ADD_SERVICE,
     payload:true
-})
+});
 
 export const addServiceSuccess = (service) =>({
     type:serviceConstants.ADD_SERVICE_SUCCESS,
@@ -113,9 +113,9 @@ export const deleteServiceFailure = () => ({
     payload:true
 })
 
-export function onlyServiceAction(client){
+export function onlyServiceAction(service){
     return (dispatch) =>{
-        dispatch(onlyService(client))
+        dispatch(onlyService(service))
     }
 }
 
