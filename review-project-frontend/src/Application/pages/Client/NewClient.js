@@ -38,7 +38,7 @@ const NewClient = () => {
 
     return(
     <div>
-        <h2>Agregar empleado</h2>
+        <h2>Agregar Cliente</h2>
         <form onSubmit={submitAddClient}>
             Name
             <input 

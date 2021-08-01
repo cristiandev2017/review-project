@@ -26,17 +26,17 @@ export function addNewClientAction(client){
     }
 }
 
-const addClient = () =>({
+export const addClient = () =>({
     type:clientConstants.ADD_CLIENT,
     payload:true
 })
 
-const addClientSuccess = (client) =>({
+export const addClientSuccess = (client) =>({
     type:clientConstants.ADD_CLIENT_SUCCESS,
     payload:client
 });
 
-const addClientFailure = (error) =>({
+export const addClientFailure = (error) =>({
     type:clientConstants.ADD_CLIENT_FAILURE,
     payload:error
 });
@@ -46,30 +46,30 @@ export function listClientsAction(){
     return async(dispatch) =>{
         try{
             //Hago mi peticion HTTP
-            const response = await clientAxios.get('/clients');
+            const response = await clientAxios.get('/get-clients');
             dispatch(listClientSuccess(response.data));
-
         }catch(error){
             dispatch(listClientFailure());
         }
     }
 }
 
-const listClientSuccess = (clients) =>({
+export const listClientSuccess = (clients) =>({
     type:clientConstants.LIST_CLIENTS_SUCCESS,
     payload:clients
 })
 
-const listClientFailure = () =>({
+export const listClientFailure = () =>({
     type:clientConstants.LIST_CLIENTS_FAILURE,
     payload:true
 })
 
 //Eliminar empleados
-export function deleteClientAction(id){
+export function deleteClientAction(email){
     return async (dispatch) =>{
+        let body = {email:email}
         try{
-            await clientAxios.delete('/clients/'+id);
+            await clientAxios.delete('/delete-client/',{data:body});
             dispatch(deleteClientsSuccess())
             alert("Se ha eliminado correctamente");
         }catch(error){
@@ -79,12 +79,12 @@ export function deleteClientAction(id){
 }
 
 
-const deleteClientsSuccess = () => ({
+export const deleteClientsSuccess = () => ({
     type:clientConstants.DELETE_CLIENT_SUCCESS,
     payload:'Se ha eliminado'
 })
 
-const deleteClientsFailure = () => ({
+export const deleteClientsFailure = () => ({
     type:clientConstants.DELETE_CLIENT_FAILURE,
     payload:true
 })
@@ -95,7 +95,7 @@ export function onlyClientAction(client){
     }
 }
 
-const onlyClient = client =>({
+export const onlyClient = client =>({
     type:clientConstants.ONLY_CLIENT,
     payload:client
 })
@@ -128,10 +128,10 @@ export const currentuser = (phoneNumber,birthday) => {
         const responsecl = await clientAxios.post('/register-client',userdata);
         //Para mi estado
         const userstate = {        
-            id:responsecl._id,
-            fullName:responsecl.fullName,
-            photoURL:responsecl.photoURL,
-            phoneNumber:responsecl.phoneNumber,
+            id:responsecl.data._id,
+            fullName:responsecl.data.fullName,
+            photoURL:responsecl.data.photoURL,
+            phoneNumber:responsecl.data.phoneNumber,
             birthday:birthday,
             autenticado:true
         } 

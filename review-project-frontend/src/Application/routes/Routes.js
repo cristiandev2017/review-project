@@ -11,9 +11,8 @@ export const PrivateRoute = ({component: Component, authenticated, ...rest}) => 
     )
 }
 export const PublicRoute = ({component: Component, authenticated, ...rest}) => {
-    console.log("public",authenticated)
     return (
-        <Route{...rest} render={(props) => authenticated === false ? <Component {...props} /> : <Redirect to="/newclient"/>}
+        <Route{...rest} render={(props) => authenticated === false ? <Component {...props} /> : <Redirect to="/citas"/>}
         />
     );
 }
