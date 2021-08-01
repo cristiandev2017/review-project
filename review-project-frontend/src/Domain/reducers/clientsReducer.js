@@ -56,7 +56,7 @@ const clientsReducer =(state=initialState, action) =>{
         case clientConstants.DELETE_CLIENT_SUCCESS:
             return{
             ...state,
-            loading: action.payload
+            error: action.payload
             }
         case clientConstants.DELETE_CLIENT_FAILURE:
             return{
