@@ -23,7 +23,7 @@ function Admin() {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/admin-editemployesemail">
-                Editar Empleados por correo
+                Buscar Empleados por correo
               </Link>
             </li>
           </ul>

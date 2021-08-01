@@ -20,3 +20,5 @@ export const ONLY_EMPLOYE = 'ONLY_EMPLOYE';
 
 //Edit
 export const EDIT_EMPLOYE = 'EDIT_EMPLOYE';
+
+export const ONLY_EMPLOYE_EMAIL = 'ONLY_EMPLOYE_EMAIL';
