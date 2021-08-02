@@ -49,7 +49,7 @@ const servicesReducer =(state=initialState, action) =>{
         case serviceConstants.DELETE_SERVICE_SUCCESS:
             return{
             ...state,
-            loading: action.payload
+            error: action.payload
             }
         case serviceConstants.DELETE_SERVICE_FAILURE:
             return{

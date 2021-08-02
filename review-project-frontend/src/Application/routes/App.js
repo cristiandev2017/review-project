@@ -15,6 +15,7 @@ import Citas from './../pages/Client/Citas';
 import Clients from '../pages/Client/Clients';
 import NewService from '../pages/Services/newService';
 import Services from './../pages/Services/Services';
+import ServicesUser from './../pages/Services/ServicesUser';
 
 //import { connect } from "react-redux";
 //import { getUser } from "../../Domain/selectors/user";
@@ -29,6 +30,7 @@ import Footer from './../layout/Footer';
 
 //Rutas
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 
 class App extends Component {
   constructor() {
@@ -98,6 +100,11 @@ class App extends Component {
             path="/register"
             component={Register}
             authenticated={this.state.authenticated}
+          />
+          <Route
+            exact
+            path="/servicesuser"
+            component={ServicesUser}
           />
           <PrivateRoute
             exact

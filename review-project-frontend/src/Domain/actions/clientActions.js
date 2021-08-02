@@ -26,17 +26,17 @@ export function addNewClientAction(client){
     }
 }
 
-const addClient = () =>({
+export const addClient = () =>({
     type:clientConstants.ADD_CLIENT,
     payload:true
 })
 
-const addClientSuccess = (client) =>({
+export const addClientSuccess = (client) =>({
     type:clientConstants.ADD_CLIENT_SUCCESS,
     payload:client
 });
 
-const addClientFailure = (error) =>({
+export const addClientFailure = (error) =>({
     type:clientConstants.ADD_CLIENT_FAILURE,
     payload:error
 });
@@ -54,12 +54,12 @@ export function listClientsAction(){
     }
 }
 
-const listClientSuccess = (clients) =>({
+export const listClientSuccess = (clients) =>({
     type:clientConstants.LIST_CLIENTS_SUCCESS,
     payload:clients
 })
 
-const listClientFailure = () =>({
+export const listClientFailure = () =>({
     type:clientConstants.LIST_CLIENTS_FAILURE,
     payload:true
 })
@@ -79,12 +79,12 @@ export function deleteClientAction(email){
 }
 
 
-const deleteClientsSuccess = () => ({
+export const deleteClientsSuccess = () => ({
     type:clientConstants.DELETE_CLIENT_SUCCESS,
     payload:'Se ha eliminado'
 })
 
-const deleteClientsFailure = () => ({
+export const deleteClientsFailure = () => ({
     type:clientConstants.DELETE_CLIENT_FAILURE,
     payload:true
 })
@@ -95,7 +95,7 @@ export function onlyClientAction(client){
     }
 }
 
-const onlyClient = client =>({
+export const onlyClient = client =>({
     type:clientConstants.ONLY_CLIENT,
     payload:client
 })

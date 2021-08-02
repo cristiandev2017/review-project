@@ -14,6 +14,7 @@ import {
     //READ
     ONLY_EMPLOYE,
     EDIT_EMPLOYE,
+    ONLY_EMPLOYE_EMAIL
 } from '../types/employe.js';
 
 //Object Values
@@ -155,16 +156,20 @@ const onlyEmploye = employe =>({
 })
 
 export function onlyEmployeEmailAction(employe){
-    console.log(employe);
-    return async () =>{
+    return async(dispatch) =>{
        try {
-       return await clientAxios.post('get-employee-by-email',employe); 
-        //dispatch(onlyEmployeEmail(response))
+       const response =await clientAxios.get('get-employee-by-email?email='+employe.email); 
+       dispatch(onlyEmployeEmail(response.data))
        } catch (error) {
         console.log("ERROR");
        } 
     }
 }
+
+const onlyEmployeEmail = (employe) =>({
+   type:ONLY_EMPLOYE,
+   payload:employe
+})
 
 export const employeEditAction =(employe) => {
     return async (dispatch) =>{

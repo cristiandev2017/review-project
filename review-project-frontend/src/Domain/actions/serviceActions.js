@@ -49,17 +49,17 @@ function getService(name,description,value,employeeID) {
 
 
 
-const addService = () =>({
+export const addService = () =>({
     type:serviceConstants.ADD_SERVICE,
     payload:true
-})
+});
 
-const addServiceSuccess = (service) =>({
+export const addServiceSuccess = (service) =>({
     type:serviceConstants.ADD_SERVICE_SUCCESS,
     payload:service
 });
 
-const addServiceFailure = (error) =>({
+export const addServiceFailure = (error) =>({
     type:serviceConstants.ADD_SERVICE_FAILURE,
     payload:error
 });
@@ -78,12 +78,12 @@ export function listServicesAction(){
     }
 }
 
-const listServiceSuccess = (services) =>({
+export const listServiceSuccess = (services) =>({
     type:serviceConstants.LIST_SERVICES_SUCCESS,
     payload:services
 })
 
-const listServiceFailure = () =>({
+export const listServiceFailure = () =>({
     type:serviceConstants.LIST_SERVICES_FAILURE,
     payload:true
 })
@@ -103,23 +103,23 @@ export function deleteServiceAction(name){
     }
 }
 
-const deleteServiceSuccess = () => ({
+export const deleteServiceSuccess = () => ({
     type:serviceConstants.DELETE_SERVICE_SUCCESS,
     payload:'Se ha eliminado'
 })
 
-const deleteServiceFailure = () => ({
+export const deleteServiceFailure = () => ({
     type:serviceConstants.DELETE_SERVICE_FAILURE,
     payload:true
 })
 
-export function onlyServiceAction(client){
+export function onlyServiceAction(service){
     return (dispatch) =>{
-        dispatch(onlyService(client))
+        dispatch(onlyService(service))
     }
 }
 
-const onlyService = service =>({
+export const onlyService = service =>({
     type:serviceConstants.ONLY_CLIENT,
     payload:service
 })
@@ -133,9 +133,10 @@ export const serviceEditAction= (service) =>{
     }
 }
 
-const editService = () => ({
+export const editService = () => ({
     type:serviceConstants.EDIT_SERVICE,
     payload:true
 })
+
 
 
