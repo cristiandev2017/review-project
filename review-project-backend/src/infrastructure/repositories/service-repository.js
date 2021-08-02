@@ -31,6 +31,10 @@ class ServiceRepositoryMongo extends ServiceRepository {
         return await ServiceSchema.findOne({ name: name });
     }
 
+    async findById(id) {
+        return await ServiceSchema.findById(id);
+    }
+
     async findAll() {
         return await ServiceSchema.find({});
     }

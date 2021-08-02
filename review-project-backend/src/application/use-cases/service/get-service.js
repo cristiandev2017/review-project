@@ -12,4 +12,14 @@ async function getServiceByName(name, ServiceRepository) {
     return ServiceRepository.findByName(name);
 }
 
-module.exports = { getAllServices, getServiceByName };
+async function getServiceById(id, ServiceRepository) {
+    if (!id) {
+        return {
+            errorMessage: 'Necesita el id para buscar en la BD',
+            success: false
+        }
+    }
+    return ServiceRepository.findById(id);
+}
+
+module.exports = { getAllServices, getServiceByName, getServiceById };

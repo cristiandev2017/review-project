@@ -1,5 +1,5 @@
 const { createService } = require('../../application/use-cases/service/create-service');
-const { getAllServices, getServiceByName } = require('../../application/use-cases/service/get-service');
+const { getAllServices, getServiceByName, getServiceById } = require('../../application/use-cases/service/get-service');
 const { deleteService } = require('../../application/use-cases/service/delete-service');
 const { updateServiceValue } = require('../../application/use-cases/service/update-service');
 const { ServiceRepositoryMongo } = require('../../infrastructure/repositories/service-repository');
@@ -30,6 +30,15 @@ async function GetServiceByName(req, res) {
     }
 }
 
+async function GetServiceById(req, res) {
+    try {
+        const { id } = req.query;
+        res.json(await getServiceById(id, ServiceRepositoryMongo.prototype));
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
 async function DeleteService(req, res) {
     try {
         const { name } = req.body;
@@ -48,4 +57,4 @@ async function UpdateServiceValue(req, res) {
     }
 }
 
-module.exports = { CreateService, GetAllServices, GetServiceByName, DeleteService, UpdateServiceValue };
+module.exports = { CreateService, GetAllServices, GetServiceByName, DeleteService, UpdateServiceValue, GetServiceById };
